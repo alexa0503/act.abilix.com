@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang=zh-cn>
+
+<head>
+    <meta charset=utf-8>
+    <meta content="IE=edge" http-equiv=X-UA-Compatible>
+    <meta content="" name=description>
+    <meta content="Alx" name=author>
+    <title>首届能力风暴杯机器人创意大赛</title>
+    <link href="/css/bootstrap.css" rel=stylesheet>
+    <!--[if lt IE 9]><script src=/js/ie8-responsive-file-warning.js></script><![endif]-->
+    <!--[if lt IE 9]> <script src=https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js></script> <script src=https://oss.maxcdn.com/respond/1.4.2/respond.min.js></script> <![endif]-->
+    <link href="/css/abilix.css?v=0.03" rel=stylesheet>
+    <link href="/apple-touch-icon.png" rel=apple-touch-icon>
+    <link href="container" rel=icon>
+    <script language="javascript">
+        document.ontouchmove = function(e){
+            e.preventDefault();
+        }
+        document.write('<meta name="viewport" content="width=750, minimum-scale = ' + window.screen.width / 640 + ', maximum-scale = ' + window.screen.width / 640 + ', user-scalable=no, target-densitydpi=device-dpi">');
+    </script>
+</head>
+
+<body class="abilix">
+<header>
+    <div class="container">
+        <img src="/images/header.png" class="img-responsive" >
+    </div>
+</header>
+<div class="container hide" id="page1">
+    <div class="row">
+        <div class="topper-01">
+            <img src="/images/topper-01.png" class="img-responsive" >
+        </div>
+        <div class="default-album">
+            <img src="/images/default-album.png" class="img-responsive" >
+        </div>
+        <div class="rows text-center choose">
+            <div class="col-xs-6">
+                <span class="btn btn-camera" ></span>
+                <input type="file" accept="image/*;" capture="camera" >
+            </div>
+            <div class="col-xs-6">
+                <span class="btn btn-album" ></span>
+                <input type="file" name="file" accept="image/*">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container " id="page2">
+    <div class="row">
+        <div class="topper-01">
+            No.001
+        </div>
+        <div class="custom-album">
+            <div id="custom-album">
+                <img src="/images/test-photo.jpg" width="785"  >
+            </div>
+        </div>
+        <div class="work-name">
+            <div><img src="/images/icon-name.png"  /></div>
+            <div><input type="text" name="name" value=""></div>
+        </div>
+        <div class="rows btns-upload">
+            <div class="col-xs-6 text-left">
+                <button class="btn btn-upload"></button>
+            </div>
+            <div class="col-xs-6 text-right">
+                <button class="btn btn-reset"></button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    window.jQuery || document.write('<script src="/js/jquery.min.js"><\/script>')
+</script>
+<script src=/js/bootstrap.min.js></script>
+<script src=/js/hammer.min.js></script>
+<script src=/js/hammer-time.min.js></script>
+<script src=/js/velocity.min.js></script>
+<script src="//res.wx.qq.com/open/js/jweixin-1.2.0.js "></script>
+<script>
+    $().ready(function(){
+        var img = $("#custom-album img");
+        var manager = new Hammer.Manager($("#custom-album")[0]);  	//stage---->表示要加入手势的dom节点
+        var Pan = new Hammer.Pan();			//Pan是移动对象实例
+        var Pinch = new Hammer.Pinch();		//Pinch是缩放的对象实例
+
+        Pinch.recognizeWith([Pan]);
+        manager.add(Pan);
+        manager.add(Pinch);
+
+        var deltaX = 0;
+        var deltaY = 0;
+        var nLeftTemp = 0;
+        var nTopTemp = 0;
+        var liveScale = 1;
+        var currentScale = 1;
+        var nWidth = img.width();
+        var nHeight = img.height();  //获取目标图片的高宽
+        var mWidth = $("#custom-album").width();
+        var mHeight = $("#custom-album").height();
+
+        var scale1 = parseFloat(380/nWidth);
+        var scale2 = parseFloat(380/nHeight);
+        var minScale = scale1.toFixed(1);
+        if ( scale1 < scale2 ){
+            minScale = scale2.toFixed(1);
+        }
+
+        manager.on('panmove', function (e) {
+            var dX = deltaX + e.deltaX;
+            var dY = deltaY + e.deltaY;
+            $.Velocity.hook(img, 'translateX', dX + 'px');
+            $.Velocity.hook(img, 'translateY', dY + 'px');   //注Velocity是动画js库
+        });
+        manager.on('panend', function (e) {
+            deltaX = deltaX + e.deltaX;
+            deltaY = deltaY + e.deltaY;
+            var nOffSet = img.offset();  //这行开始下面是控制边界的逻辑
+            var nLeft = nOffSet.left;
+            var nTop = nOffSet.top;
+            var mOffset = $("#custom-album").offset();
+            var nMaxLeft = mOffset.left - 4;     //最大左移的位置
+            var nMaxTop = mOffset.top - 4;    //最大上移的位置
+            var nMaxRight = mOffset.left + mWidth - liveScale * nWidth + 4;   //最大右移位置
+            var nMaxBottom = mOffset.top + mHeight - liveScale * nHeight + 4; //最大底部的位置
+
+            if ( nLeft < nMaxRight){
+                nLeftTemp = nMaxRight;
+            }
+            else if (nLeft > nMaxLeft){
+                nLeftTemp = nMaxLeft;
+            }
+            else{
+                nLeftTemp = nLeft;
+            }
+            if (nTop < nMaxBottom){
+                nTopTemp = nMaxBottom;
+            }
+            else if (nTop > nMaxTop){
+                nTopTemp = nMaxTop;
+            }
+            else{
+                nTopTemp = nTop;
+            }
+            img.offset({
+                left: nLeftTemp,
+                top: nTopTemp
+            });
+        });
+
+        function getRelativeScale(scale) {
+            return scale * currentScale;
+        }
+        manager.on('pinchmove', function (e) {
+            var scale = getRelativeScale(e.scale);
+            if(scale > 1){
+                scale = 1;
+            } //防止图片太糊，这里限制图片放大的最大倍数
+            if(scale < minScale){
+                scale = minScale;
+            }  //不让图片缩小
+            $.Velocity.hook(img, 'scale', currentScale);
+        });
+        manager.on('pinchend', function (e) {
+            currentScale = getRelativeScale(e.scale);
+            if(currentScale > 1){
+                currentScale = 1;
+            }
+
+            if(currentScale < minScale){
+                currentScale = minScale;
+            }
+            liveScale = currentScale;
+            $.Velocity.hook(img, 'scale', currentScale);  //这里先放缩后然后做边界控制
+
+            var nOffSet = img.offset();
+            var nLeft = nOffSet.left;
+            var nTop = nOffSet.top;
+
+            var mOffset = $("#custom-album").offset();
+            var nMaxLeft = mOffset.left - 4;     //最大左移的位置
+            var nMaxTop = mOffset.top - 4;    //最大上移的位置
+            var nMaxRight = mOffset.left + mWidth - liveScale * nWidth + 4;   //最大右移位置
+            var nMaxBottom = mOffset.top + mHeight - liveScale * nHeight + 4; //最大底部的位置
+
+            if ( nLeft < nMaxRight){
+                nLeftTemp = nMaxRight;
+            }
+            else if (nLeft > nMaxLeft){
+                nLeftTemp = nMaxLeft;
+            }
+            else{
+                nLeftTemp = nLeft;
+            }
+            if (nTop < nMaxBottom){
+                nTopTemp = nMaxBottom;
+            }
+            else if (nTop > nMaxTop){
+                nTopTemp = nMaxTop;
+            }
+            else{
+                nTopTemp = nTop;
+            }
+            img.offset({
+                left: nLeftTemp,
+                top: nTopTemp
+            });
+        });
+
+    })
+</script>
+</body>
+</html>

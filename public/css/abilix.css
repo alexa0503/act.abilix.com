@@ -1,0 +1,295 @@
+@font-face {
+	font-family: 'impactreg';
+	src: url('../fonts/impactreg.eot');
+	src: local('../fonts/impactreg'), url('../fonts/impactreg.woff') format('woff'), url('../fonts/impactreg.ttf') format('truetype');
+}
+.abilix {
+    background: url("../images/bkg.jpg") center 0 no-repeat;
+}
+header {
+    margin: 18px 0;
+    text-align: center;
+    height: 53px;
+}
+.topper-01 {
+    margin: 10px 60px;
+    font-family: 'impactreg';
+    color: #0062a6;
+    text-align: center;
+    font-size: 40px;
+}
+.default-album {
+    margin: 10px 157px 90px;
+}
+.custom-album {
+    width: 484px;
+    height: 484px;
+    margin: 10px auto 40px;
+}
+.custom-album #custom-album{
+    width: 480px;
+    height: 480px;
+    border: 4px solid #0d66b3;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+}
+.custom-album #custom-album img {
+    position: absolute;
+    left:0;
+    top:0;
+}
+.btn-camera,
+.btn-camera:focus,
+.btn-camera:active:focus,
+.btn-camera.active:focus,
+.btn-camera.focus,
+.btn-camera:active.focus,
+.btn-camera:active,
+.btn-camera.active,
+.btn-camera.active.focus{
+    width: 319px;
+    height: 80px;
+    background: url("../images/btn-camera.png") 0 0 no-repeat;
+    -webkit-background-size: 100% 100%;           /* Safari 3.0 */
+    -moz-background-size: 100% 100%;           /* Gecko 1.9.2 (Firefox 3.6) */
+    -o-background-size: 100% 100%;           /* Opera 9.5 */
+    background-size: 100% 100%;
+}
+.btn-upload,
+.btn-upload:focus,
+.btn-upload:active:focus,
+.btn-upload.active:focus,
+.btn-upload.focus,
+.btn-upload:active.focus,
+.btn-upload:active,
+.btn-upload.active,
+.btn-upload.active.focus{
+    margin-left: 40px;
+    width: 319px;
+    height: 80px;
+    background: url("../images/btn-upload.png") 0 0 no-repeat;
+    -webkit-background-size: 100% 100%;           /* Safari 3.0 */
+    -moz-background-size: 100% 100%;           /* Gecko 1.9.2 (Firefox 3.6) */
+    -o-background-size: 100% 100%;           /* Opera 9.5 */
+    background-size: 100% 100%;
+}
+.btn-list,
+.btn-list:focus,
+.btn-list:active:focus,
+.btn-list.active:focus,
+.btn-list.focus,
+.btn-list:active.focus,
+.btn-list:active,
+.btn-list.active,
+.btn-list.active.focus{
+    margin-left: 40px;
+    width: 319px;
+    height: 80px;
+    background: url("../images/btn-list.png") 0 0 no-repeat;
+    -webkit-background-size: 100% 100%;           /* Safari 3.0 */
+    -moz-background-size: 100% 100%;           /* Gecko 1.9.2 (Firefox 3.6) */
+    -o-background-size: 100% 100%;           /* Opera 9.5 */
+    background-size: 100% 100%;
+}
+.btn-album,
+.btn-album:focus,
+.btn-album:active:focus,
+.btn-album.active:focus,
+.btn-album.focus,
+.btn-album:active.focus,
+.btn-album:active,
+.btn-album.active,
+.btn-album.active.focus{
+    margin-left: 30px;
+    width: 254px;
+    height: 80px;
+    background: url("../images/btn-album.png") 0 0 no-repeat;
+    -webkit-background-size: 100% 100%;           /* Safari 3.0 */
+    -moz-background-size: 100% 100%;           /* Gecko 1.9.2 (Firefox 3.6) */
+    -o-background-size: 100% 100%;           /* Opera 9.5 */
+    background-size: 100% 100%;
+}
+.btn-share,
+.btn-share:focus,
+.btn-share:active:focus,
+.btn-share.active:focus,
+.btn-share.focus,
+.btn-share:active.focus,
+.btn-share:active,
+.btn-share.active,
+.btn-share.active.focus{
+    margin-right: 40px;
+    width: 254px;
+    height: 80px;
+    background: url("../images/btn-share.png") 0 0 no-repeat;
+    -webkit-background-size: 100% 100%;           /* Safari 3.0 */
+    -moz-background-size: 100% 100%;           /* Gecko 1.9.2 (Firefox 3.6) */
+    -o-background-size: 100% 100%;           /* Opera 9.5 */
+    background-size: 100% 100%;
+}
+.btn-reset,
+.btn-reset:focus,
+.btn-reset:active:focus,
+.btn-reset.active:focus,
+.btn-reset.focus,
+.btn-reset:active.focus,
+.btn-reset:active,
+.btn-reset.active,
+.btn-reset.active.focus{
+    margin-right: 40px;
+    width: 254px;
+    height: 80px;
+    background: url("../images/btn-reset.png") 0 0 no-repeat;
+    -webkit-background-size: 100% 100%;           /* Safari 3.0 */
+    -moz-background-size: 100% 100%;           /* Gecko 1.9.2 (Firefox 3.6) */
+    -o-background-size: 100% 100%;           /* Opera 9.5 */
+    background-size: 100% 100%;
+}
+.btn:focus,
+.btn:active:focus,
+.btn.active:focus,
+.btn.focus,
+.btn:active.focus,
+.btn:active,
+.btn.active,
+.btn.active.focus {
+    outline: none;
+    outline-offset: 0;
+    -webkit-box-shadow:none;
+    box-shadow: none;
+}
+.choose div {
+    position: relative;
+    height: 68px;
+}
+.choose input[type="file"] {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+.choose div span {
+    position: absolute;
+    top: 0;
+}
+.choose div span.btn-camera {
+    left:60px;
+}
+.choose div span.btn-album {
+    right:60px;
+}
+.work-name {
+    text-align: center;
+}
+.work-name input {
+    border: none;
+    border-bottom: 3px solid #0d66b3;
+    background: none;
+    margin: 50px 0 120px 0;
+    height: 40px;
+    line-height: 40px;
+    font-size: 30px;
+    color:#0d66b3;
+    width: 400px;
+}
+.work-name input:focus {
+    outline: none;
+    outline-offset: 0;
+    -webkit-box-shadow:none;
+    box-shadow: none;
+}
+.btns-upload {
+
+}
+.btns-page3 {
+    margin-top: 40px;
+}
+#modal-tip .modal-dialog {
+    margin-top: 50%;
+}
+#modal-tip .modal-content {
+    background: none;
+    font-family: impactreg;
+    text-align: center;
+    color: #FFF;
+    -webkit-box-shadow:none;
+    box-shadow: none;
+    border: none;
+}
+#modal-share .modal-content {
+    background: none;
+    font-family: impactreg;
+    text-align: center;
+    color: #FFF;
+    -webkit-box-shadow:none;
+    box-shadow: none;
+    border: none;
+}
+#modal-share .modal-body {
+    position: relative;
+    padding-top: 160px;
+}
+#modal-share .share-close {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top:24px;
+    right:24px;
+}
+.modal-backdrop {
+    background: #174581;
+}
+.modal-backdrop.in {
+    filter: alpha(opacity=95);
+    opacity: .95;
+}
+#page-list .content {
+    margin: 0px 28px;
+    border: 18px solid #2375ba;
+    border-radius: 10px;
+    background: #2375ba;
+    height: 750px;
+    overflow: scroll;
+    overflow-x: hidden;
+    font-family: "impactreg";
+    color:#fff;
+    font-weight: normal;
+}
+#page-list .col-img {
+    width: 50%;
+    float: left;
+    position: relative;
+    min-height: 1px;
+}
+#page-list .content .img-rounded {
+    border: 2px solid #fff;
+}
+#page-list .content .txt {
+    width: 300px;
+    margin: 10px auto;
+    height: 45px;
+    line-height: 45px;
+    font-size: 2em;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    text-align: left;
+    padding-left: 10px;
+    position: relative;
+}
+#page-list .content .txt .heart {
+    top:-3px;
+    right: 0;
+    position: absolute;
+    padding-right: 10px;
+}
+#page-list .content .txt .heart .glyphicon-heart-empty {
+    color: #e7604f;
+}
+#page-list .footer {
+    margin-top: 20px;
+}
+#page-list .rows {
+    margin: 20px 46px 0;
+    font-size: 1.8em;
+}
