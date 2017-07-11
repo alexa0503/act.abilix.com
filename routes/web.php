@@ -43,7 +43,7 @@ Route::group(['middleware'=>['web','wechat.oauth']], function(){
         return response(['ret'=>0,'msg'=>'']);
     });
 });
-
+Route::any('/wechat', 'WechatController@serve');
 
 Route::group(['middleware' => ['role:superadmin,global privileges','menu'],'prefix'=>'admin'], function () {
     Route::get('/', function () {
@@ -79,4 +79,3 @@ Route::get('/install', function(){
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
