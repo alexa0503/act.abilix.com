@@ -26,18 +26,27 @@ class WechatUserListener
      */
     public function handle(WeChatUserAuthorized $event)
     {
+        $user = $event->user;
         if( $event->isNewSession ){
             //新授权用户写入表
-            $user = $event->user;
-            \App\WechatUser::updateOrCreate([
+            $data = [
                 'openid' => $user->id,
                 'nickname' => $user->nickname,
                 'avatar' => $user->avatar,
-                'sex' => $user->original->sex,
-                'province' => $user->original->province,
-                'city' => $user->original->city,
-                'country' => $user->original->country,
-            ]);
+                'sex' => $user->original["sex"],
+                'province' => $user->original["province"],
+                'city' => $user->original["city"],
+                'country' => $user->original["country"],
+            ];
+            $count = \App\WechatUser::where('openid', $user->id)->count();
+            if($count >= 1){
+                \App\WechatUser::where('openid', $user->id)->update($data);
+            }
+            else{
+                \App\WechatUser::create($data);
+            }
         }
+        $wechat_user = \App\WechatUser::where('openid', $user->id)->first();
+        \Session::put('wechat.oauth_user.user_id', $wechat_user->id);
     }
 }

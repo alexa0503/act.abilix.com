@@ -13,6 +13,7 @@
     <link href="/apple-touch-icon.png" rel=apple-touch-icon>
     <link href="container" rel=icon>
     <script src=/js/jquery.min.js></script>
+    <script src="//res.wx.qq.com/open/js/jweixin-1.2.0.js "></script>
     <script language="javascript">
         document.ontouchmove = function(e){
             e.preventDefault();
@@ -20,10 +21,15 @@
         var _s = window.screen.width / 750;
         document.write('<meta name="viewport" content="width=750, minimum-scale = ' + _s + ', maximum-scale = ' + _s + ', user-scalable=no, target-densitydpi=device-dpi, shrink-to-fit=no">');
     </script>
+    @php
+        $js = \EasyWeChat::js();
+    @endphp
     <script>
         window.Laravel = {!! json_encode([
             'csrfToken' => csrf_token(),
         ]) !!};
+        wx.config({!! $js->config(array('onMenuShareTimeline','onMenuShareAppMessage','onMenuShareQQ', 'onMenuShareWeibo','chooseImage','uploadImage','downloadImage'), true) !!});
+
     </script>
 </head>
 <body class="abilix">

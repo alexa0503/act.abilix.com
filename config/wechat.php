@@ -88,6 +88,6 @@ return [
     ],
     'route' => [
         'enabled' => true,
-        'open_platform_serve_url'=> '',
+        'open_platform_serve_url'=> '/wechat',
     ],
 ];

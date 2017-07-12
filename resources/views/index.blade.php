@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <div class="container hide page" id="page1">
+    <div class="container  page" id="page1">
         <div class="row">
             <div class="topper-01">
                 <img src="/images/topper-01.png" class="img-responsive" >
@@ -20,15 +20,15 @@
             </div>
         </div>
     </div>
-    <div class="container page" id="page2">
+    <div class="container hide page" id="page2">
         <div class="row">
             <div class="topper-01">
-                No.001
+                No.{{$count}}
             </div>
             <div class="custom-album">
                 <div id="custom-album">
                     <img src="/images/test-photo.jpg"  >
-                    <input type="hidden" name="image" value="">
+                    <input type="hidden" name="image" value="/images/test-photo.jpg">
                 </div>
             </div>
             <div class="work-name">
@@ -82,7 +82,6 @@
     <script src=/js/hammer.min.js></script>
     <script src=/js/hammer-time.min.js></script>
     <script src=/js/velocity.min.js></script>
-    <script src="//res.wx.qq.com/open/js/jweixin-1.2.0.js "></script>
     <script>
         var hasSubmitted = false;
         $().ready(function(){
@@ -255,8 +254,44 @@
                 $('#page1').removeClass('hide');
             })
             $('#file-ablum,#file-camera').on('change',function () {
-                $('.page').addClass('hide');
-                $('#page2').removeClass('hide');
+                //alert($(this).attr('id'));
+                var localIds;
+                if ($(this).attr('id') == 'file-camera'){
+                    var sourceType = ['camera'];
+                }
+                else{
+                    var sourceType = ['album'];
+                }
+                wx.chooseImage({
+                    count: 1, // 默认9
+                    sizeType: ['compressed'], // 可以指定是原图还是压缩图，默认二者都有
+                    sourceType: sourceType, // 可以指定来源是相册还是相机，默认二者都有
+                    success: function (res) {
+                        localIds = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
+                        wx.uploadImage({
+                            localId: localIds[0], // 需要上传的图片的本地ID，由chooseImage接口获得
+                            isShowProgressTips: 1, // 默认为1，显示进度提示
+                            success: function (res) {
+                                var serverId = res.serverId; // 返回图片的服务器端ID
+                                $.ajax({
+                                    url: '{{url("/image")}}',
+                                    data: {id:serverId},
+                                    dataType:'json',
+                                    method:'GET'
+                                }).done(function(json) {
+                                    if (json.ret == 0){
+                                        $('.page').addClass('hide');
+                                        $('#page2').removeClass('hide');
+                                    }
+                                }).fail(function() {
+                                    alert( "上传失败，请稍候重试" );
+                                }).always(function() {
+                                    //alert( "complete" );
+                                });
+                            }
+                        });
+                    }
+                });
             });
             $('.btn-share').on('touchend', function () {
                 $('#modal-share').modal({keyboard: false,show:true});

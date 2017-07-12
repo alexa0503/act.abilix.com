@@ -29,7 +29,6 @@
     </div>
 @endsection
 @section('scripts')
-    <script src="//res.wx.qq.com/open/js/jweixin-1.2.0.js "></script>
     <script>
         var hasSubmitted = false;
         $().ready(function(){

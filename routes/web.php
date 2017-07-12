@@ -13,11 +13,13 @@
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+Route::any('/wechat', 'WechatController@serve');
 Route::group(['middleware'=>['web','wechat.oauth']], function(){
     Route::get('/', function(){
-        $js = \EasyWeChat::js();
+        //$js = \EasyWeChat::js();
         //echo $js->config(array('onMenuShareQQ', 'onMenuShareWeibo'), true);
-        return view('index');
+        $count = \App\Work::count();
+        return view('index',['count'=>$count+1]);
     });
     //榜单
     Route::get('/list', function(Request $request){
@@ -31,19 +33,38 @@ Route::group(['middleware'=>['web','wechat.oauth']], function(){
             ]);
         }
 
-
-
     });
     //分享结果页面
-    Route::get('/result/{id}', function(){
-
+    Route::get('/work/{id}', function($id){
+        $work = \App\Work::find($id);
+        if( null == $work ){
+            return redirect(url('/'));
+        }
+        return view('work',['work'=>$work]);
     });
     //信息提交
-    Route::post('/upload', function(){
+    Route::post('/upload', function(Request $request){
+        $work = new \App\Work;
+        $work->name = $request->name;
+        $work->image = $request->image;
+        $work->vote_num = 0;
+        $work->user_id = session('wechat.oauth_user.user_id');
+        if($work->save()){
+            return response(['ret'=>0,'msg'=>'']);
+        }
+        else{
+            return response(['ret'=>1001,'msg'=>'抱歉，服务器发生异常~']);
+        }
+    });
+    Route::get('/image', function(Request $request, $id){
+        $wechat = app('wechat');
+        $temporary = $wechat->material_temporary;
+        $content = $temporary->getStream($id);
+        $filename = uniqid(session('wechat.oauth_user.user_id')).'.jpg';
+        \Storage::disk('local')->put($filename, $content);
         return response(['ret'=>0,'msg'=>'']);
     });
 });
-Route::any('/wechat', 'WechatController@serve');
 
 Route::group(['middleware' => ['role:superadmin,global privileges','menu'],'prefix'=>'admin'], function () {
     Route::get('/', function () {
