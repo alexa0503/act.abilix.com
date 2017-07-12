@@ -13,75 +13,105 @@
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+
 Route::any('/wechat', 'WechatController@serve');
-Route::group(['middleware'=>['web','wechat.oauth']], function(){
-    Route::get('/', function(){
-        //$js = \EasyWeChat::js();
-        //echo $js->config(array('onMenuShareQQ', 'onMenuShareWeibo'), true);
+Route::group(['middleware' => ['web', 'wechat.oauth']], function () {
+    Route::get('/', function () {
+
         $count = \App\Work::count();
-        return view('index',['count'=>$count+1]);
+        return view('index', ['count' => $count + 1]);
     });
     //榜单
-    Route::get('/list', function(Request $request){
+    Route::get('/list/{id?}', function (Request $request, $id = null) {
         $works = \App\Work::paginate(20);
-        if($request->ajax()){
+        if ($request->ajax()) {
             return $works;
-        }
-        else{
-            return view('list',[
-                'works'=>$works
+        } else {
+            return view('list', [
+                'works' => $works,
+                'id' => $id,
             ]);
         }
 
     });
     //分享结果页面
-    Route::get('/work/{id}', function($id){
+    Route::get('/work/{id}', function ($id) {
         $work = \App\Work::find($id);
-        if( null == $work ){
-            return redirect(url('/'));
+        if (null == $work) {
+            return [];
+            //return redirect(url('/'));
         }
-        return view('work',['work'=>$work]);
+        return $work;
+        //return view('work', ['work' => $work]);
     });
     //信息提交
-    Route::post('/upload', function(Request $request){
+    Route::post('/upload', function (Request $request) {
+        $scale = $request->scale ?: 1;
+        $x = $request->x ?: 0;
+        $y = $request->y ?: 0;
+        $image = \Image::make(public_path($request->image));
+        $width = $image->width();
+        //$height = $image->height();
+        $image->resize($width * $scale, null, function ($constraint) {
+            $constraint->aspectRatio();
+        });
+        $image->crop(480, 480, $x, $y);
+        $image->save(public_path($request->image));
         $work = new \App\Work;
         $work->name = $request->name;
         $work->image = $request->image;
         $work->vote_num = 0;
-        $work->user_id = session('wechat.oauth_user.user_id');
-        if($work->save()){
-            return response(['ret'=>0,'msg'=>'']);
-        }
-        else{
-            return response(['ret'=>1001,'msg'=>'抱歉，服务器发生异常~']);
+        $work->user_id = session('user_id');
+        if ($work->save()) {
+            return response([
+                'ret' => 0,
+                'msg' => '',
+                'data'=>[
+                    'share_url'=>url('')
+                ]
+            ]);
+        } else {
+            return response(['ret' => 1001, 'msg' => '抱歉，服务器发生异常~']);
         }
     });
-    Route::get('/image', function(Request $request, $id){
+    Route::get('/image/{id}', function (Request $request, $id) {
         $wechat = app('wechat');
         $temporary = $wechat->material_temporary;
         $content = $temporary->getStream($id);
-        $filename = uniqid(session('wechat.oauth_user.user_id')).'.jpg';
-        \Storage::disk('local')->put($filename, $content);
-        return response(['ret'=>0,'msg'=>'']);
+        $filename = uniqid(session('user_id')) . '.jpg';
+        \Storage::disk('public')->put($filename, $content);
+        $image = \Image::make(storage_path('app/public/' . $filename));
+        $width = $image->width();
+        $height = $image->height();
+        return response([
+            'ret' => 0,
+            'msg' => '',
+            'data' => [
+                'url' => asset('storage/' . $filename),
+                'path' => 'storage/' . $filename,
+                'width' => $width,
+                'height' => $height,
+            ]
+        ]);
     });
 });
 
-Route::group(['middleware' => ['role:superadmin,global privileges','menu'],'prefix'=>'admin'], function () {
+Route::group(['middleware' => ['role:superadmin,global privileges', 'menu'], 'prefix' => 'admin'], function () {
     Route::get('/', function () {
         return redirect('/admin/dashboard');
     });
     Route::get('/dashboard', 'Admin\IndexController@index');
     Route::resource('/gallery', 'Admin\GalleryController');
     Route::get('/form/{type?}', 'Admin\FormController@index')->name('form.index');
-    Route::resource('/form', 'Admin\FormController',['except'=>'index']);
+    Route::resource('/form', 'Admin\FormController', ['except' => 'index']);
     Route::resource('/work', 'Admin\WorkController');
     //Route::resource('/wechat/user', 'Admin\WechatUserController');
 });
 Route::get('/login', 'Auth\LoginController@showLoginForm');
 Route::post('/login', 'Auth\LoginController@postLogin');
 Route::get('/logout', 'Auth\LoginController@logout');
-Route::get('/install', function(){
-    if( \App\User::count() == 0){
+Route::get('/install', function () {
+    if (\App\User::count() == 0) {
         $role = Role::create(['name' => 'superadmin']);
         $permission = Permission::create(['name' => 'global privileges']);
         $role->givePermissionTo('global privileges');

@@ -10,12 +10,10 @@
             </div>
             <div class="rows text-center choose">
                 <div class="col-xs-6">
-                    <span class="btn btn-camera" ></span>
-                    <input type="file" accept="image/*;" capture="camera" id="file-camera" >
+                    <span class="btn btn-camera" id="camera"></span>
                 </div>
                 <div class="col-xs-6">
                     <span class="btn btn-album" ></span>
-                    <input type="file" accept="image/*" id="file-ablum">
                 </div>
             </div>
         </div>
@@ -27,8 +25,8 @@
             </div>
             <div class="custom-album">
                 <div id="custom-album">
-                    <img src="/images/test-photo.jpg"  >
-                    <input type="hidden" name="image" value="/images/test-photo.jpg">
+                    <img src="" id="upload-image"  >
+                    <input type="hidden" name="image" value="">
                 </div>
             </div>
             <div class="work-name">
@@ -84,6 +82,10 @@
     <script src=/js/velocity.min.js></script>
     <script>
         var hasSubmitted = false;
+        var image = '';
+        var x = 0;
+        var y = 0;
+        var scale = 1;
         $().ready(function(){
             $(document).ajaxStart(function () {
                 hasSubmitted = true;
@@ -107,17 +109,13 @@
             var nTopTemp = 0;
             var liveScale = 1;
             var currentScale = 1;
-            var nWidth = img.width();
-            var nHeight = img.height();  //获取目标图片的高宽
+            var nWidth = 0;
+            var nHeight = 0;  //获取目标图片的高宽
             var mWidth = $("#custom-album").width();
             var mHeight = $("#custom-album").height();
+            var minScale = 1;
 
-            var scale1 = parseFloat(480/nWidth);
-            var scale2 = parseFloat(480/nHeight);
-            var minScale = scale1.toFixed(1);
-            if ( scale1 < scale2 ){
-                minScale = scale2.toFixed(1);
-            }
+
 
             manager.on('panmove', function (e) {
                 var dX = deltaX + e.deltaX;
@@ -159,6 +157,7 @@
                     left: nLeftTemp,
                     top: nTopTemp
                 });
+                scale = currentScale;
             });
 
             function getRelativeScale(scale) {
@@ -218,13 +217,15 @@
                     left: nLeftTemp,
                     top: nTopTemp
                 });
+                scale = currentScale;
             });
 
 
             ///////
             $('.btn-upload').on('touchend',function(){
                 var work_name = $('input[name="name"]').val();
-                var image = $('input[name="image"]').val();
+
+                //var image = $('input[name="image"]').val();
                 if ( !hasSubmitted ){
                     if ( work_name === '' ){
                         alert('作品名不能为空哦');
@@ -232,7 +233,7 @@
                     else{
                         $.ajax({
                             url:'{{url("/upload")}}',
-                            data:{name:work_name, image:image,_token: window.Laravel.csrfToken},
+                            data:{name:work_name, image:image, x:x, y:y, scale:scale, _token: window.Laravel.csrfToken},
                             dataType:'json',
                             method:'POST'
                         }).done(function(json) {
@@ -240,7 +241,10 @@
                                 $('.page').addClass('hide');
                                 $('#page3').removeClass('hide');
                             }
-                        }).fail(function() {
+                        }).fail(function( jqXHR, textStatus, errorThrown) {
+                            $('.page').addClass('hide');
+                            $('#page3').removeClass('hide');
+                            $('#page3').html(JSON.stringify(jqXHR));
                             alert( "上传失败，请稍候重试" );
                         }).always(function() {
                             //alert( "complete" );
@@ -253,10 +257,10 @@
                 $('.page').addClass('hide');
                 $('#page1').removeClass('hide');
             })
-            $('#file-ablum,#file-camera').on('change',function () {
+            $('.btn-camera,.btn-album').on('touchend',function () {
                 //alert($(this).attr('id'));
                 var localIds;
-                if ($(this).attr('id') == 'file-camera'){
+                if ($(this).attr('id') == 'camera'){
                     var sourceType = ['camera'];
                 }
                 else{
@@ -273,13 +277,25 @@
                             isShowProgressTips: 1, // 默认为1，显示进度提示
                             success: function (res) {
                                 var serverId = res.serverId; // 返回图片的服务器端ID
+                                var url = '{{url("/image")}}'+'/'+serverId;
                                 $.ajax({
-                                    url: '{{url("/image")}}',
-                                    data: {id:serverId},
+                                    url: url,
                                     dataType:'json',
                                     method:'GET'
                                 }).done(function(json) {
                                     if (json.ret == 0){
+                                        nWidth = json.data.width;
+                                        nHeight = json.data.height;
+                                        var scale1 = parseFloat(480/nWidth);
+                                        var scale2 = parseFloat(480/nHeight);
+                                        minScale = scale1.toFixed(1);
+                                        if ( scale1 < scale2 ){
+                                            minScale = scale2.toFixed(1);
+                                        }
+                                        $('#upload-image').attr('src', json.data.url);
+                                        $('#upload-image').width(json.data.width);
+                                        $('#upload-image').height(json.data.height);
+                                        image = json.data.path;
                                         $('.page').addClass('hide');
                                         $('#page2').removeClass('hide');
                                     }

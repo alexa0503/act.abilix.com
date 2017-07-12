@@ -47,6 +47,9 @@ class WechatUserListener
             }
         }
         $wechat_user = \App\WechatUser::where('openid', $user->id)->first();
-        \Session::put('wechat.oauth_user.user_id', $wechat_user->id);
+        if( $wechat_user )
+            \Session::put('user_id', $wechat_user->id);
+        else
+            \Session::put('user_id', 1);
     }
 }

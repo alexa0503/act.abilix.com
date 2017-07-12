@@ -9,11 +9,12 @@
     <link href="/css/bootstrap.css" rel=stylesheet>
     <!--[if lt IE 9]><script src=/js/ie8-responsive-file-warning.js></script><![endif]-->
     <!--[if lt IE 9]> <script src=https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js></script> <script src=https://oss.maxcdn.com/respond/1.4.2/respond.min.js></script> <![endif]-->
-    <link href="/css/abilix.css?v=0.04" rel=stylesheet>
+    <link href="/css/abilix.css?v={{time()}}" rel=stylesheet>
     <link href="/apple-touch-icon.png" rel=apple-touch-icon>
     <link href="container" rel=icon>
     <script src=/js/jquery.min.js></script>
     <script src="//res.wx.qq.com/open/js/jweixin-1.2.0.js "></script>
+    <script src=/js/abilix.js></script>
     <script language="javascript">
         document.ontouchmove = function(e){
             e.preventDefault();
@@ -28,7 +29,16 @@
         window.Laravel = {!! json_encode([
             'csrfToken' => csrf_token(),
         ]) !!};
+        @if(env('APP_ENV') != 'local')
         wx.config({!! $js->config(array('onMenuShareTimeline','onMenuShareAppMessage','onMenuShareQQ', 'onMenuShareWeibo','chooseImage','uploadImage','downloadImage'), true) !!});
+        wxData = {
+            title: '能力风暴教育机器人积木系列', // 分享标题
+            desc: '能力风暴教育机器人积木系列', // 分享描述
+            link: '{{url("/")}}', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+            imgUrl: '{{asset("images/share.jpg")}}' // 分享图标
+        };
+        wxShare(wxData);
+        @endif
 
     </script>
 </head>

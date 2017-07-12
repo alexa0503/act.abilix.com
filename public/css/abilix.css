@@ -146,6 +146,23 @@ header {
     -o-background-size: 100% 100%;           /* Opera 9.5 */
     background-size: 100% 100%;
 }
+.btn-back,
+.btn-back:focus,
+.btn-back:active:focus,
+.btn-back.active:focus,
+.btn-back.focus,
+.btn-back:active.focus,
+.btn-back:active,
+.btn-back.active,
+.btn-back.active.focus{
+    width: 254px;
+    height: 90px;
+    background: url("../images/btn-back.png") 0 0 no-repeat;
+    -webkit-background-size: 100% 100%;           /* Safari 3.0 */
+    -moz-background-size: 100% 100%;           /* Gecko 1.9.2 (Firefox 3.6) */
+    -o-background-size: 100% 100%;           /* Opera 9.5 */
+    background-size: 100% 100%;
+}
 .btn:focus,
 .btn:active:focus,
 .btn.active:focus,
@@ -292,4 +309,24 @@ header {
 #page-list .rows {
     margin: 20px 46px 0;
     font-size: 1.8em;
+}
+#page-work {
+    background: url("../images/bkg-work.png") center 0 no-repeat;
+}
+#page-work .work-name .title {
+    color: #035faf;
+    font-size: 36px;
+    line-height: 50px;
+    width: 400px;
+    margin: -10px auto 15px;
+    padding: 0;
+    height: 50px;
+    border-bottom: 2px #035faf solid;
+}
+#page-work .work-name .heart {
+    font-family: "impactreg";
+    font-size: 70px;
+    line-height: 70px;
+    color: #035faf;
+    margin-bottom: 120px;
 }

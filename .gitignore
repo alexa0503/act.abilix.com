@@ -8,6 +8,8 @@
 /public/qr
 /public/front
 /storage/*.key
+/storage/assets
+/storage/app/public
 /vendor
 /.idea
 /.vagrant

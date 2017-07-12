@@ -182,6 +182,7 @@ return [
         Jenssegers\Agent\AgentServiceProvider::class,
         SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
         Overtrue\LaravelWechat\ServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class
 
     ],
 
@@ -237,6 +238,7 @@ return [
         'Agent' => Jenssegers\Agent\Facades\Agent::class,
         'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
         'EasyWeChat' => Overtrue\LaravelWechat\Facade::class,
+        'Image' => Intervention\Image\Facades\Image::class
 
     ],
 
