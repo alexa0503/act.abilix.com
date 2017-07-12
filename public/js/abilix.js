@@ -1,8 +1,8 @@
 var wxData = {
-    link:''
+    link: ''
 };
-function wxShare(data){
-    wx.ready(function(){
+function wxShare(data) {
+    wx.ready(function () {
         wx.onMenuShareAppMessage({
             title: data.title, // 分享标题
             desc: data.desc, // 分享描述
@@ -35,30 +35,78 @@ function wxShare(data){
 
 }
 
-function getWork(id)
-{
-    var url = '/work/'+id;
+function getWork(id) {
+    $(document).bind(".abilix");
+    var url = '/work/' + id;
     $.ajax({
         url: url,
-        dataType:'json',
-        method:'GET'
-    }).done(function(work) {
+        dataType: 'json',
+        method: 'GET'
+    }).done(function (work) {
+        var obj = $('#page-work .heart a');
         $('#work-id').html(work.id);
-        $('#work-image').attr('src',work.image);
+        $('#work-image').attr('src', work.image);
         $('#work-name').html(work.name);
         $('#work-vote').html(work.vote_num);
+        if (work.has_voted){
+            obj.find('img').eq(1).removeClass('hide');
+        }
+        else{
+            obj.find('img').eq(0).removeClass('hide');
+        }
         $(".page").addClass("hide");
         $('#page-work').removeClass("hide");
-    }).fail(function() {
+        $('#page-work .heart a').bind('click',function (e) {
+            vote(work.id,obj);
+        });
+    }).fail(function () {
         alert('获取信息失败，请稍候重试~')
-    }).always(function() {
+    }).always(function () {
         //alert( "complete" );
     });
-    if ( $('#page-work').hasClass('hide') ){
+    if ($('#page-work').hasClass('hide')) {
         wxData.link = '/';
     }
-    else{
-        wxData.link = '/list/'+id;
+    else {
+        wxData.link = '/list/' + id;
     }
     wxShare(wxData);
+}
+function vote(id,obj) {
+    $(document).unbind(".abilix");
+    var url = '/vote/' + id;
+    $.ajax({
+        url: url,
+        dataType: 'json',
+        method: 'GET'
+    }).done(function (json) {
+        var _obj;
+        var img = obj.find('img');
+        var heart = obj.parent('.heart');
+        if ( img.eq(1).hasClass('hide') ){
+            _obj = heart.append('<div class="animation1">+1</div>').find('.animation1');
+            _obj.animate({top:"-20px"},800, 'linear', function () {
+                _obj.hide(20).remove();
+                img.eq(0).addClass('hide');
+                img.eq(1).removeClass('hide');
+                heart.find('span').text(json.vote_num);
+            });
+
+        }
+        else{
+            _obj = heart.append('<div class="animation2">-1</div>').find('.animation2');
+            _obj.animate({top:"80px"},800, 'linear', function () {
+                _obj.hide(20).remove();
+                img.eq(1).addClass('hide');
+                img.eq(0).removeClass('hide');
+                heart.find('span').text(json.vote_num);
+            });
+        }
+
+
+    }).fail(function () {
+        alert('点赞失败，请稍候重试~')
+    }).always(function () {
+        //alert( "complete" );
+    });
 }

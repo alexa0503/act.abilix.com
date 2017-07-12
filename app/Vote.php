@@ -10,8 +10,8 @@ class Vote extends Model
     {
         return $this->belongsTo('App\WechatUser');
     }
-    public function form()
+    public function work()
     {
-        return $this->belongsTo('App\Form');
+        return $this->belongsTo('App\Work');
     }
 }

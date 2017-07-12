@@ -233,6 +233,7 @@ header {
     -webkit-box-shadow:none;
     box-shadow: none;
     border: none;
+    font-size: 30px;
 }
 #modal-share .modal-content {
     background: none;
@@ -300,6 +301,20 @@ header {
     position: absolute;
     padding-right: 10px;
 }
+#page-list .content .txt .heart .animation1 {
+    top: 80px;
+    right: 20px;
+    color: #e7604f;
+    font-size: 28px;
+    position: absolute;
+}
+#page-list .content .txt .heart .animation2 {
+    top: -20px;
+    right: 20px;
+    color: #e7604f;
+    font-size: 28px;
+    position: absolute;
+}
 #page-list .content .txt .heart .glyphicon-heart-empty {
     color: #e7604f;
 }
@@ -329,4 +344,22 @@ header {
     line-height: 70px;
     color: #035faf;
     margin-bottom: 120px;
+    position: relative;
+}
+#page-work .work-name .heart a {
+    text-decoration: none;
+}
+#page-work .work-name .heart .animation1 {
+    top: 80px;
+    right: 260px;
+    color: #e7604f;
+    font-size: 48px;
+    position: absolute;
+}
+#page-work .work-name  .heart .animation2 {
+    top: -20px;
+    right: 260px;
+    color: #e7604f;
+    font-size: 48px;
+    position: absolute;
 }

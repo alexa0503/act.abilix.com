@@ -6,7 +6,7 @@
             @foreach($works as $k=>$work)
                 <div class="col-img text-center">
                     <a href="javascript:;" onclick="getWork({{$work->id}});"><img src="{{$work->image}}" width="300" class="img-rounded" height="300" /></a>
-                    <div class="txt">No.{{$work->id}}<div class="heart"><a href="javascript:;"><img src="/images/icon-heart.png"></a> {{$work->vote_num}}</div></div>
+                    <div class="txt">No.{{$work->id}}<div class="heart"><a href="javascript:;" onclick="vote('{{$work->id}}',$(this))"><img class="{{$work->hasVoted ? 'hide' : ''}}" src="/images/icon-heart-empty.png"><img class="{{$work->hasVoted ? '' : 'hide'}}" src="/images/icon-heart.png"></a> <span>{{$work->vote_num}}</span></div></div>
                 </div>
             @endforeach
             </div>
@@ -40,8 +40,10 @@
             <div class="work-name">
                 <div class="title" id="work-name"></div>
                 <div class="heart">
-                    <img src="/images/icon-big-heart.png" width="93" height="73"/>
-                    <img src="/images/icon-big-heart-empty.png" width="85" height="71" class="hidden"/> <span id="work-vote"></span>
+                    <a href="javascript:;">
+                        <img src="/images/icon-big-heart-empty.png" width="85" height="71" class="hide"/>
+                        <img src="/images/icon-big-heart.png" width="93" height="73" class="hide"/>
+                    </a> <span id="work-vote"></span>
                 </div>
             </div>
             <div class="rows text-center">
@@ -60,16 +62,18 @@
             @else
             $('#page-list').removeClass('hide');
             @endif
-            $(document).ajaxStart(function () {
+            $(document).bind("ajaxStart.abilix", function () {
                 hasSubmitted = true;
                 $('#modal-tip').modal({keyboard: false,show:true,backdrop: 'static'});
-            }).ajaxComplete(function(){
+            })
+            $(document).bind("ajaxComplete.abilix", function(){
                 hasSubmitted = false;
                 $('#modal-tip').modal('hide');
             });
             $(".btn-back").on('touchend', function () {
-                $(".page").addClass("hide");
-                $('#page-list').removeClass("hide");
+                window.location.href = '{{url("/")}}';
+                //$(".page").addClass("hide");
+                //$('#page-list').removeClass("hide");
             });
             var page = 2;
             var beforeScrollTop = $("#page-list .content").scrollTop();

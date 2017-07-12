@@ -34,15 +34,40 @@ Route::group(['middleware' => ['web', 'wechat.oauth']], function () {
         }
 
     });
-    //分享结果页面
     Route::get('/work/{id}', function ($id) {
         $work = \App\Work::find($id);
         if (null == $work) {
             return [];
             //return redirect(url('/'));
         }
-        return $work;
+        $data = $work->toArray();
+        $data['has_voted'] = $work->has_voted;
+        return response($data);
         //return view('work', ['work' => $work]);
+    });
+    Route::get('/vote/{id}', function($id){
+        $user_id = session('user_id');
+        $count = \App\Vote::where('work_id', $id)
+            ->where('voter_id', $user_id)
+            ->count();
+        $work = \App\Work::find($id);
+        if( $count == 0 ){
+            $work->vote_num += 1;
+            $work->save();
+            $vote = new \App\Vote;
+            $vote->work_id = $id;
+            $vote->voter_id = $user_id;
+            $vote->save();
+        }
+        else{
+            $work->vote_num -= 1;
+            $work->save();
+            \App\Vote::where('work_id', $id)
+                ->where('voter_id', $user_id)
+                ->delete();
+        }
+        return response(['ret'=>0,'vote_num'=>$work->vote_num]);
+
     });
     //信息提交
     Route::post('/upload', function (Request $request) {
