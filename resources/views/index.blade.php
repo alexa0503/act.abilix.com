@@ -240,11 +240,13 @@
                             if (json.ret == 0){
                                 $('.page').addClass('hide');
                                 $('#page3').removeClass('hide');
+                                wxData.link = json.share_url;
+                                wxShare(wxData);
+                            }
+                            else{
+                                alert(json.msg);
                             }
                         }).fail(function( jqXHR, textStatus, errorThrown) {
-                            $('.page').addClass('hide');
-                            $('#page3').removeClass('hide');
-                            $('#page3').html(JSON.stringify(jqXHR));
                             alert( "上传失败，请稍候重试" );
                         }).always(function() {
                             //alert( "complete" );

@@ -67,7 +67,7 @@ Route::group(['middleware' => ['web', 'wechat.oauth']], function () {
                 'ret' => 0,
                 'msg' => '',
                 'data'=>[
-                    'share_url'=>url('')
+                    'share_url'=>url('/list',['id'=>$work->id])
                 ]
             ]);
         } else {
