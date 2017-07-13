@@ -1,6 +1,6 @@
 $().ready(function(){
     $(".btn-back").on('touchend', function () {
-        window.location.href = '{{url("/")}}';
+        window.location.href = '/';
         //$(".page").addClass("hide");
         //$('#page-list').removeClass("hide");
     });
@@ -18,7 +18,7 @@ $().ready(function(){
         if( !no_more && delta > 0 && contentH - viewH - scrollTop <= 50){ //到达底部100px时,加载新内容
             no_more = true;
             $.ajax({
-                url:'{{url("/list")}}',
+                url:'/list',
                 data:{page:page},
                 dataType:'json',
                 method:'GET'

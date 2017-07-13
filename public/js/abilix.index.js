@@ -4,7 +4,6 @@ var x = 0;
 var y = 0;
 var scale = 1;
 $().ready(function(){
-
     var img = $("#custom-album img");
     var manager = new Hammer.Manager($("#custom-album")[0]);  	//stage---->表示要加入手势的dom节点
     var Pan = new Hammer.Pan();			//Pan是移动对象实例
@@ -45,10 +44,10 @@ $().ready(function(){
                     setTimeout(function () {
                         wx.uploadImage({
                             localId: localIds[0], // 需要上传的图片的本地ID，由chooseImage接口获得
-                            isShowProgressTips: 1, // 默认为1，显示进度提示
+                            isShowProgressTips: 2, // 默认为1，显示进度提示
                             success: function (res) {
                                 var serverId = res.serverId; // 返回图片的服务器端ID
-                                var url = '{{url("/image")}}'+'/'+serverId;
+                                var url = '/image/'+serverId;
                                 $.ajax({
                                     url: url,
                                     dataType:'json',
@@ -77,9 +76,8 @@ $().ready(function(){
                                         image = json.data.path;
                                         $('.page').addClass('hide');
                                         $('#page2').removeClass('hide');
-                                        //$("#log-info").html('width:'+nWidth+',height:'+nHeight);
                                     }
-                                }).fail(function() {
+                                }).fail(function(jqXHR, textStatus, errorThrown) {
                                     alert( "上传失败，请稍候重试" );
                                 }).always(function() {
                                     //alert( "complete" );
@@ -211,7 +209,7 @@ $().ready(function(){
             }
             else{
                 $.ajax({
-                    url:'{{url("/upload")}}',
+                    url:'/upload',
                     data:{name:work_name, image:image, x:x, y:y, scale:scale, _token: window.Laravel.csrfToken},
                     dataType:'json',
                     method:'POST'
