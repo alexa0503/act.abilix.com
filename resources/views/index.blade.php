@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <div class="container  page" id="page1">
+    <div class="container page" id="page1">
         <div class="row">
             <div class="topper-01">
                 <img src="/images/topper-01.png" class="img-responsive" >
@@ -25,7 +25,7 @@
             </div>
             <div class="custom-album">
                 <div id="custom-album">
-                    <img src="" id="upload-image"  >
+                    <img src="" width="" height="" id="upload-image"  >
                     <input type="hidden" name="image" value="">
                 </div>
             </div>
@@ -41,6 +41,7 @@
                     <button class="btn btn-reset"></button>
                 </div>
             </div>
+            <div id="log-info hide"></div>
         </div>
     </div>
     <div class="container hide page" id="page3">
@@ -109,13 +110,11 @@
             var nTopTemp = 0;
             var liveScale = 1;
             var currentScale = 1;
-            var nWidth = 0;
-            var nHeight = 0;  //获取目标图片的高宽
+            var nWidth = img.width() || 0;
+            var nHeight = img.height() || 0;  //获取目标图片的高宽
             var mWidth = $("#custom-album").width();
             var mHeight = $("#custom-album").height();
             var minScale = 1;
-
-
 
             manager.on('panmove', function (e) {
                 var dX = deltaX + e.deltaX;
@@ -158,6 +157,9 @@
                     top: nTopTemp
                 });
                 scale = currentScale;
+                x = -1*(nLeftTemp - mOffset.left + 4);
+                y = -1*(nTopTemp - mOffset.top + 4);
+                //$('#log-info').html('x:'+x+', y:'+y+', scale:'+scale);
             });
 
             function getRelativeScale(scale) {
@@ -218,14 +220,15 @@
                     top: nTopTemp
                 });
                 scale = currentScale;
+                x = -1*(nLeftTemp - mOffset.left + 4);
+                y = -1*(nTopTemp - mOffset.top + 4);
+                //$('#log-info').html('x:'+x+', y:'+y+', scale:'+scale);
             });
 
 
             ///////
             $('.btn-upload').on('touchend',function(){
                 var work_name = $('input[name="name"]').val();
-
-                //var image = $('input[name="image"]').val();
                 if ( !hasSubmitted ){
                     if ( work_name === '' ){
                         alert('作品名不能为空哦');
@@ -240,13 +243,14 @@
                             if (json.ret == 0){
                                 $('.page').addClass('hide');
                                 $('#page3').removeClass('hide');
-                                wxData.link = json.share_url;
+                                wxData.link = json.data.share_url;
                                 wxShare(wxData);
                             }
                             else{
                                 alert(json.msg);
                             }
                         }).fail(function( jqXHR, textStatus, errorThrown) {
+                            //$('#log-info').html(JSON.stringify(jqXHR));
                             alert( "上传失败，请稍候重试" );
                         }).always(function() {
                             //alert( "complete" );
@@ -290,10 +294,13 @@
                                         nHeight = json.data.height;
                                         var scale1 = parseFloat(480/nWidth);
                                         var scale2 = parseFloat(480/nHeight);
-                                        minScale = scale1.toFixed(1);
                                         if ( scale1 < scale2 ){
                                             minScale = scale2.toFixed(1);
                                         }
+                                        else{
+                                            minScale = scale1.toFixed(1);
+                                        }
+                                        //$("#log-info").html('width:'+nWidth+',height:'+nHeight);
                                         $('#upload-image').attr('src', json.data.url);
                                         $('#upload-image').width(json.data.width);
                                         $('#upload-image').height(json.data.height);

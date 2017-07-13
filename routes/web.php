@@ -42,6 +42,7 @@ Route::group(['middleware' => ['web', 'wechat.oauth']], function () {
         }
         $data = $work->toArray();
         $data['has_voted'] = $work->has_voted;
+        $data['image'] = asset($work->image);
         return response($data);
         //return view('work', ['work' => $work]);
     });
@@ -74,6 +75,8 @@ Route::group(['middleware' => ['web', 'wechat.oauth']], function () {
         $scale = $request->scale ?: 1;
         $x = $request->x ?: 0;
         $y = $request->y ?: 0;
+        $x = (int)$x;
+        $y = (int)$y;
         $image = \Image::make(public_path($request->image));
         $width = $image->width();
         //$height = $image->height();

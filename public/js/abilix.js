@@ -72,41 +72,45 @@ function getWork(id) {
     }
     wxShare(wxData);
 }
+var hasVoted = false;
 function vote(id,obj) {
     $(document).unbind(".abilix");
     var url = '/vote/' + id;
-    $.ajax({
-        url: url,
-        dataType: 'json',
-        method: 'GET'
-    }).done(function (json) {
-        var _obj;
-        var img = obj.find('img');
-        var heart = obj.parent('.heart');
-        if ( img.eq(1).hasClass('hide') ){
-            _obj = heart.append('<div class="animation1">+1</div>').find('.animation1');
-            _obj.animate({top:"-20px"},800, 'linear', function () {
-                _obj.hide(20).remove();
-                img.eq(0).addClass('hide');
-                img.eq(1).removeClass('hide');
-                heart.find('span').text(json.vote_num);
-            });
-
-        }
-        else{
-            _obj = heart.append('<div class="animation2">-1</div>').find('.animation2');
-            _obj.animate({top:"80px"},800, 'linear', function () {
-                _obj.hide(20).remove();
-                img.eq(1).addClass('hide');
-                img.eq(0).removeClass('hide');
-                heart.find('span').text(json.vote_num);
-            });
-        }
-
-
-    }).fail(function () {
-        alert('点赞失败，请稍候重试~')
-    }).always(function () {
-        //alert( "complete" );
-    });
+    if ( !hasVoted ){
+        hasVoted = true;
+        $.ajax({
+            url: url,
+            dataType: 'json',
+            method: 'GET'
+        }).done(function (json) {
+            var _obj;
+            var img = obj.find('img');
+            var heart = obj.parent('.heart');
+            if ( img.eq(1).hasClass('hide') ){
+                _obj = heart.append('<div class="animation1">+1</div>').find('.animation1');
+                _obj.animate({top:"-20px"},800, 'linear', function () {
+                    _obj.hide(20).remove();
+                    img.eq(0).addClass('hide');
+                    img.eq(1).removeClass('hide');
+                    heart.find('span').text(json.vote_num);
+                    hasVoted = false;
+                });
+            }
+            else{
+                _obj = heart.append('<div class="animation2">-1</div>').find('.animation2');
+                _obj.animate({top:"80px"},800, 'linear', function () {
+                    _obj.hide(20).remove();
+                    img.eq(1).addClass('hide');
+                    img.eq(0).removeClass('hide');
+                    heart.find('span').text(json.vote_num);
+                    hasVoted = false;
+                });
+            }
+        }).fail(function () {
+            alert('点赞失败，请稍候重试~');
+            hasVoted = false;
+        }).always(function () {
+            //alert( "complete" );
+        });
+    }
 }
