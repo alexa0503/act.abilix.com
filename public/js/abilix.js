@@ -1,6 +1,4 @@
-var wxData = {
-    link: ''
-};
+
 function wxShare(data) {
     wx.ready(function () {
         wx.onMenuShareAppMessage({
@@ -67,13 +65,6 @@ function getWork(id) {
     }).always(function () {
         //alert( "complete" );
     });
-    /*
-    if ($('#page-work').hasClass('hide')) {
-        wxData.link = 'http://' + window.location.host;
-        wxData.imgUrl = 'http://' + window.location.host + '/share.jpg';
-    }
-    wxShare(wxData);
-    */
 }
 var hasVoted = false;
 function vote(id, obj) {
@@ -117,3 +108,13 @@ function vote(id, obj) {
         });
     }
 }
+$().ready(function(){
+    $(document).bind("ajaxStart.abilix", function () {
+        hasSubmitted = true;
+        $('#modal-tip').modal({keyboard: false,show:true,backdrop: 'static'});
+    })
+    $(document).bind("ajaxComplete.abilix", function(){
+        hasSubmitted = false;
+        $('#modal-tip').modal('hide');
+    });
+});
