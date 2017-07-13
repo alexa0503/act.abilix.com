@@ -87,6 +87,7 @@
 
                 beforeScrollTop = scrollTop;
                 if( !no_more && delta > 0 && contentH - viewH - scrollTop <= 50){ //到达底部100px时,加载新内容
+                    no_more = true;
                     $.ajax({
                         url:'{{url("/list")}}',
                         data:{page:page},
@@ -102,10 +103,10 @@
                             });
                             $('#page-list .content .row').append(html);
                             page++;
+                            no_more = false;
                         }
                         else if (json.data.length == 0){
                             $('#page-list .content .row').append('<div class="clearfix"></div><div class="text-center"><h1>没有更多的作品啦</h1></div>');
-                            no_more = true;
                         }
                     }).fail(function() {
                         //alert( "上传失败，请稍候重试" );

@@ -48,35 +48,38 @@ function getWork(id) {
         $('#work-image').attr('src', work.image);
         $('#work-name').html(work.name);
         $('#work-vote').html(work.vote_num);
-        if (work.has_voted){
+        if (work.has_voted) {
             obj.find('img').eq(1).removeClass('hide');
         }
-        else{
+        else {
             obj.find('img').eq(0).removeClass('hide');
         }
         $(".page").addClass("hide");
         $('#page-work').removeClass("hide");
-        $('#page-work .heart a').bind('click',function (e) {
-            vote(work.id,obj);
+        $('#page-work .heart a').bind('click', function (e) {
+            vote(work.id, obj);
         });
+        wxData.imgUrl = work.image;
+        wxData.link = 'http://' + window.location.host + '/list/' + id;
+        wxShare(wxData);
     }).fail(function () {
         alert('获取信息失败，请稍候重试~')
     }).always(function () {
         //alert( "complete" );
     });
+    /*
     if ($('#page-work').hasClass('hide')) {
-        wxData.link = '/';
-    }
-    else {
-        wxData.link = '/list/' + id;
+        wxData.link = 'http://' + window.location.host;
+        wxData.imgUrl = 'http://' + window.location.host + '/share.jpg';
     }
     wxShare(wxData);
+    */
 }
 var hasVoted = false;
-function vote(id,obj) {
+function vote(id, obj) {
     $(document).unbind(".abilix");
     var url = '/vote/' + id;
-    if ( !hasVoted ){
+    if (!hasVoted) {
         hasVoted = true;
         $.ajax({
             url: url,
@@ -86,9 +89,9 @@ function vote(id,obj) {
             var _obj;
             var img = obj.find('img');
             var heart = obj.parent('.heart');
-            if ( img.eq(1).hasClass('hide') ){
+            if (img.eq(1).hasClass('hide')) {
                 _obj = heart.append('<div class="animation1">+1</div>').find('.animation1');
-                _obj.animate({top:"-20px"},800, 'linear', function () {
+                _obj.animate({top: "-20px"}, 800, 'linear', function () {
                     _obj.hide(20).remove();
                     img.eq(0).addClass('hide');
                     img.eq(1).removeClass('hide');
@@ -96,9 +99,9 @@ function vote(id,obj) {
                     hasVoted = false;
                 });
             }
-            else{
+            else {
                 _obj = heart.append('<div class="animation2">-1</div>').find('.animation2');
-                _obj.animate({top:"80px"},800, 'linear', function () {
+                _obj.animate({top: "80px"}, 800, 'linear', function () {
                     _obj.hide(20).remove();
                     img.eq(1).addClass('hide');
                     img.eq(0).removeClass('hide');
