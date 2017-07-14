@@ -49,7 +49,7 @@
             <div><img src="/images/page-success.png" class="img-responsive" /></div>
             <div class="btns-page3">
                 <div class="col-xs-6 text-left">
-                    <a class="btn btn-list" href="{{url('/list')}}"></a>
+                    <a class="btn btn-list" href="{{url('/list')}}" onclick="_czc.push(['_trackEvent','abilix-H5','bt-作品排名']);"></a>
                 </div>
                 <div class="col-xs-6 text-right">
                     <button class="btn btn-share"></button>

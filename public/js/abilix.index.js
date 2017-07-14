@@ -31,9 +31,11 @@ $().ready(function(){
             var localIds;
             if ($(this).attr('id') == 'camera'){
                 var sourceType = ['camera'];
+                _czc.push(["_trackEvent","abilix-H5","bt-拍摄造型"]);
             }
             else{
                 var sourceType = ['album'];
+                _czc.push(["_trackEvent","abilix-H5","bt-相册选取"]);
             }
             wx.chooseImage({
                 count: 1, // 默认9
@@ -208,6 +210,7 @@ $().ready(function(){
                 alert('作品名不能为空哦');
             }
             else{
+                _czc.push(["_trackEvent","abilix-H5","bt-作品上传"]);
                 $.ajax({
                     url:'/upload',
                     data:{name:work_name, image:image, x:x, y:y, scale:scale, _token: window.Laravel.csrfToken},
@@ -234,10 +237,12 @@ $().ready(function(){
 
     });
     $('.btn-reset').on('click',function () {
+        _czc.push(["_trackEvent","abilix-H5","bt-重新上传"]);
         $('.page').addClass('hide');
         $('#page1').removeClass('hide');
     })
     $('.btn-share').on('touchend', function () {
+        _czc.push(["_trackEvent","abilix-H5","bt-立刻分享"]);
         $('#modal-share').modal({keyboard: false,show:true});
     })
     $('.share-close').on('touchend', function(){

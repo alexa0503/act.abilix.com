@@ -62,5 +62,15 @@
 <script src="/js/bootstrap.min.js"></script>
 <script src="/js/abilix.js?v=0.2"></script>
 @yield('scripts')
+<div style="display:none;">
+    <script src="https://s11.cnzz.com/z_stat.php?id=1262847468&web_id=1262847468" language="JavaScript"></script>
+</div>
+<script>
+    $().ready(function () {
+        _czc.push(["_trackEvent","abilix-H5","loading"]);
+        _czc.push(["_trackEvent","abilix-H5","p-1"]);
+        _czc.push(["_trackEvent","abilix-H5","p-2"]);
+    })
+</script>
 </body>
 </html>

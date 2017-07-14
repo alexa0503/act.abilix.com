@@ -70,6 +70,8 @@
         <a href="javascript:void(0);" onclick="HomePage.me.hideRule();" class="abs button_2_kb" ><img class="ptimg" src="1-homepage/page1_hdsm_button_2_kb.png" /></a>
     </div>
 </div>
-
+<div style="display:none;">
+    <script src="https://s11.cnzz.com/z_stat.php?id=1262847468&web_id=1262847468" language="JavaScript"></script>
+</div>
 </body>
 </html>
