@@ -48,6 +48,7 @@ function getWork(id) {
         $('#work-image').attr('src', work.image);
         $('#work-name').html(work.name);
         $('#work-vote').html(work.vote_num);
+        $('#work-ranking').html(work.ranking_num);
         if (work.has_voted) {
             obj.find('img').eq(1).removeClass('hide');
         }

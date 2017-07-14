@@ -26,7 +26,7 @@ Route::group(['middleware' => ['web', 'wechat.oauth']], function () {
     });
     //榜单
     Route::get('/list/{id?}', function (Request $request, $id = null) {
-        $works = \App\Work::paginate(20);
+        $works = \App\Work::orderBy('vote_num', 'DESC')->paginate(20);
         if ($request->ajax()) {
             return $works;
         } else {
@@ -46,6 +46,10 @@ Route::group(['middleware' => ['web', 'wechat.oauth']], function () {
         $data = $work->toArray();
         $data['has_voted'] = $work->has_voted;
         $data['image'] = asset($work->image);
+        $count = \App\Work::where('vote_num','>', $work->vote_num)
+            ->orderBy('vote_num', 'DESC')
+            ->count();
+        $data['ranking_num'] = $count+1;
         return response($data);
         //return view('work', ['work' => $work]);
     });

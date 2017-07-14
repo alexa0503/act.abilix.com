@@ -6,7 +6,7 @@
     <meta content="" name=description>
     <meta content="Alx" name=author>
     <title>{{ config('app.name') }}</title>
-    <link href="/css/bootstrap.css" rel=stylesheet>
+    <link href="/css/bootstrap.min.css" rel=stylesheet>
     <!--[if lt IE 9]><script src=/js/ie8-responsive-file-warning.js></script><![endif]-->
     <!--[if lt IE 9]> <script src=https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js></script> <script src=https://oss.maxcdn.com/respond/1.4.2/respond.min.js></script> <![endif]-->
     <link href="/css/abilix.css?v=0.2" rel=stylesheet>

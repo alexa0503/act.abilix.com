@@ -45,6 +45,9 @@
                         <img src="/images/icon-big-heart.png" width="93" height="73" class="hide"/>
                     </a> <span id="work-vote"></span>
                 </div>
+                <div class="ranking">
+                    排名:<span id="work-ranking"></span>
+                </div>
             </div>
             <div class="rows text-center">
                 <button class="btn btn-back"></button>
