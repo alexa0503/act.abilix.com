@@ -46,7 +46,7 @@
     </div>
     <div class="container hide page" id="page3">
         <div class="row">
-            <div><img src="/images/page-success.png" class="img-responsive" /></div>
+            <div style="margin-top: 140px;"><img src="/images/page-success.png" /></div>
             <div class="btns-page3">
                 <div class="col-xs-6 text-left">
                     <a class="btn btn-list" href="{{url('/list')}}" onclick="_czc.push(['_trackEvent','abilix-H5','bt-作品排名']);"></a>
