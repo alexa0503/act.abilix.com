@@ -1,5 +1,5 @@
-body{width:100%;height:100%;margin:0px;padding:0px;overflow:hidden;background-color:#79acd1;}
-body,html{ margin: 0;padding:0 }
+body,html{position: fixed;overflow:hidden;
+	width:100%;height:100%;margin:0px;padding:0px;background-color:#79acd1;}
 .abs { position: absolute; }
 .ptimg { width: 100%; }
 .bg{ width: 100%; height: 100%; left: 0%; top: 0%;background:url('../1-homepage/bg.png') no-repeat 0 0;}
@@ -135,10 +135,8 @@ body,html{ margin: 0;padding:0 }
 }*/
 
 
-body{width:750px;height:1206px;}
 .bg{ width: 100%; height: 100%; left: 0%; top: 0%;}
 .bg img{max-width: 750px;}
-.page1{width: 104.93%; height: 100%; left: 0%; top: 0%;}
 .robot{width: 100%; height: 57.71%; left: 0%; top: 31.09%;}
 .page1 .robot .layer_28{ width: 95.3%; height: 98.56%; left: 0%; top: 1.44%;}
 .page1 .robot .layer_28 img{max-width: 750px;}
