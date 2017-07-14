@@ -46,7 +46,7 @@
     </div>
     <div class="abs button" >
         <a href="javascript:void(0);" onclick="HomePage.me.showRule();" class="abs button_1" ><img class="ptimg" src="1-homepage/page1_button_button_1.png" /></a>
-        <a href="javascript:void(0);" onclick="" class="abs button_2" ><img class="ptimg" src="1-homepage/page1_button_button_2.png" /></a>
+        <a href="/index" onclick="" class="abs button_2" ><img class="ptimg" src="1-homepage/page1_button_button_2.png" /></a>
     </div>
     <div class="abs hdsm" style="display:none;" >
         <img class="ptimg" src="1-homepage/page1_hdsm_slzndx.png" />

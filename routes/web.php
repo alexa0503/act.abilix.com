@@ -17,6 +17,9 @@ use Spatie\Permission\Models\Permission;
 Route::any('/wechat', 'WechatController@serve');
 Route::group(['middleware' => ['web', 'wechat.oauth']], function () {
     Route::get('/', function () {
+        return view('home');
+    });
+    Route::get('/index', function () {
 
         $count = \App\Work::count();
         return view('index', ['count' => $count + 1]);
