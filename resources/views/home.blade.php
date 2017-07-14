@@ -8,6 +8,22 @@
     <script type="text/javascript" src="js/Velocityjs.js"></script>
     <script type="text/javascript" src="js/velocity.easeplus.min.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
+    <script src="//res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    @php
+        $js = \EasyWeChat::js();
+    @endphp
+    <script>
+        @if(env('APP_ENV') != 'local')
+        wx.config({!! $js->config(array('onMenuShareTimeline','onMenuShareAppMessage','onMenuShareQQ', 'onMenuShareWeibo','chooseImage','uploadImage','downloadImage'), false) !!});
+        wxData = {
+            title: '能力风暴教育机器人积木系列', // 分享标题
+            desc: '能力风暴教育机器人积木系列', // 分享描述
+            link: '{{url("/")}}', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+            imgUrl: '{{asset("images/share.jpg")}}' // 分享图标
+        };
+        wxShare(wxData);
+        @endif
+    </script>
 </head>
 <body class='HomePage' onload='init();'>
 <div class="abs bg" > </div>
