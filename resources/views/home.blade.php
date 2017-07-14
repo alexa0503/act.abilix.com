@@ -9,6 +9,7 @@
     <script type="text/javascript" src="js/velocity.easeplus.min.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
     <script src="//res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    <script src="/js/abilix.js"></script>
     @php
         $js = \EasyWeChat::js();
     @endphp
