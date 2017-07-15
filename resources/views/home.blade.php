@@ -17,8 +17,8 @@
         @if(env('APP_ENV') != 'local')
         wx.config({!! $js->config(array('onMenuShareTimeline','onMenuShareAppMessage','onMenuShareQQ', 'onMenuShareWeibo','chooseImage','uploadImage','downloadImage'), false) !!});
         wxData = {
-            title: '能力风暴教育机器人积木系列', // 分享标题
-            desc: '能力风暴教育机器人积木系列', // 分享描述
+            title: '暑期小心！前方有一大波奖金礼物……至高10000元', // 分享标题
+            desc: '内含10000元现金大奖，手快有手慢无', // 分享描述
             link: '{{url("/")}}', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
             imgUrl: '{{asset("images/share.jpg")}}' // 分享图标
         };
