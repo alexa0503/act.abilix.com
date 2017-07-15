@@ -2,26 +2,16 @@ body,html{position: fixed;overflow:hidden;
 	width:100%;height:100%;margin:0px;padding:0px;background-color:#79acd1;}
 .abs { position: absolute; }
 .ptimg { width: 100%; }
-.bg{ width: 100%; height: 100%; left: 0%; top: 0%;background:url('../1-homepage/bg.png') no-repeat 0 0;}
+.bg{ width: 100%; height: 100%; left: 0%; top: 0%;background:url('../1-homepage/bg.jpg') no-repeat 0 0;}
 .bg img{max-width: 750px;}
 .page1{width: 104.93%; height: 100%; left: 0%; top: 0%;}
-
 .page1 .robot-ori{width: 100%; height: 57.71%; left: 0%; top: 31.09%;}
 .page1 .robot-ori .slzndx_kb_3{ width: 100%; height: 100%; left: 0%; top: 0%;}
 .page1 .robot-ori .slzndx_kb_3 img{max-width: 787px;}
-
 .page1 .robot-ori .layer_8{ width: 70.14%; height: 72.27%; left: 22.74%; top: 16.81%;}
 .page1 .robot-ori .layer_8 img{max-width: 552px;}
-
-
-
 .page1 .robot {	transition:all 0.5s 0s ease-out;}
 .page1 .robot div{	transition:all 0.5s 0s ease-out;}
-
-
-
-
-
 .page1 .hz{ width: 48.54%; height: 53.23%; left: 25.41%; top: 44.69%;}
 .page1 .hz img{max-width: 382px;}
 .page1 .bt2{ width: 76.24%; height: 16.58%; left: 9.53%; top: 20.56%;}
@@ -39,15 +29,11 @@ body,html{position: fixed;overflow:hidden;
 .page1 .header .layer_31 img{max-width: 39px;}
 .page1 .header .layer_32{ width: 5.41%; height: 12.15%; left: 37.01%; top: 4.21%;}
 .page1 .header .layer_32 img{max-width: 26px;}
-
-
 .button{width: 71.92%; height: 7.46%; left: 11.69%; top: 83.33%;}
 .page1 .button .button_1{ width: 44.88%; height: 100%; left: 0%; top: 0%;}
 .page1 .button .button_1 img{max-width: 254px;}
 .page1 .button .button_2{ width: 44.88%; height: 100%; left: 55.12%; top: 0%;}
 .page1 .button .button_2 img{max-width: 254px;}
-
-
 /*animation wj 2017-07-12*/
 .page1 .robot .center-point{
 	left:50%;
@@ -64,7 +50,6 @@ body,html{position: fixed;overflow:hidden;
     0%{-webkit-transform: rotate(0deg);	} 
     100%{-webkit-transform: rotate(360deg);	}
 }
-
 .rot2{
 	/*transform-origin:50% 45%;*/
 	animation:rot2 5.4s infinite linear;
@@ -76,7 +61,6 @@ body,html{position: fixed;overflow:hidden;
     0%{-webkit-transform: rotate(0deg);	} 
     100%{-webkit-transform: rotate(-360deg);	}
 }
-
 .updown{
 	animation:updown 4s infinite ease-in-out;
 	/*
@@ -133,8 +117,6 @@ body,html{position: fixed;overflow:hidden;
     75%{-webkit-transform: translate(-3px);	}
     100%{-webkit-transform: translate(0);	}
 }*/
-
-
 .bg{ width: 100%; height: 100%; left: 0%; top: 0%;}
 .bg img{max-width: 750px;}
 .robot{width: 100%; height: 57.71%; left: 0%; top: 31.09%;}
@@ -144,7 +126,6 @@ body,html{position: fixed;overflow:hidden;
 .page1 .robot .layer_27 img{max-width: 786px;}
 .page1 .robot-ori .layer_8{ width: 42.19%; height: 72.27%; left: 31.26%; top: 16.81%;}
 .page1 .robot-ori .layer_8 img{max-width: 332px;}
-
 .deco-pre{width: 80.69%; height: 37.48%; left: 5.08%; top: 39.22%;}
 .page1 .deco-pre .layer_21{ width: 5.35%; height: 3.54%;left: 50%; top: 50%;}
 .page1 .deco-pre .layer_21 img{max-width: 34px;}
@@ -176,8 +157,6 @@ body,html{position: fixed;overflow:hidden;
 .page1 .deco-pre .slzndx img{max-width: 60px;}
 .page1 .deco-pre .layer_29{ width: 13.23%; height: 15.93%; left: 50%; top: 50%;}
 .page1 .deco-pre .layer_29 img{max-width: 84px;}
-
-
 .deco{width: 80.69%; height: 37.48%; left: 5.08%; top: 39.22%;}
 .page1 .deco .layer_21{ width: 5.35%; height: 3.54%; left: 66.14%; top: 96.46%;}
 .page1 .deco .layer_21 img{max-width: 34px;}
@@ -209,7 +188,6 @@ body,html{position: fixed;overflow:hidden;
 .page1 .deco .slzndx img{max-width: 60px;}
 .page1 .deco .layer_29{ width: 13.23%; height: 15.93%; left: 15.28%; top: 34.29%;}
 .page1 .deco .layer_29 img{max-width: 84px;}
-
 .page1 .hz{ width: 48.54%; height: 53.23%; left: 25.41%; top: 44.69%;}
 .page1 .hz img{max-width: 382px;}
 .page1 .bt2{ width: 76.24%; height: 16.58%; left: 9.53%; top: 20.56%;}
@@ -232,16 +210,62 @@ body,html{position: fixed;overflow:hidden;
 .page1 .button .button_1 img{max-width: 254px;}
 .page1 .button .button_2{ width: 44.88%; height: 100%; left: 55.12%; top: 0%;}
 .page1 .button .button_2 img{max-width: 254px;}
-
-
-/*.hdsm{width: 95.3%; height: auto; left: 0%; top: 50%; transform:translate(0,-50%);}
-.page1 .hdsm .slzndx{ width: 100%; height: auto; left: 0%; top: 0%;}
-.page1 .hdsm .slzndx img{max-width: 750px;}
-.page1 .hdsm .button_2_kb{ width: 33.87%; height: 7.46%; left: 34.27%; top: 83.33%;}
-.page1 .hdsm .button_2_kb img{max-width: 254px;}*/
-
-
-.hdsm{width: 95.3%; height: auto; left: 0%; top: 50%; transform:translate(0,-50%);}
+.page1{width: 100%; height: 100%; left: 0%; top: 0%;}
+.robot{width: 100%; height: 57.71%; left: 0%; top: 31.09%;}
+.page1 .robot .layer_30{ width: 100%; height: 98.56%; left: 0%; top: 1.44%;}
+.page1 .robot .layer_30 img{max-width: 750px;}
+.page1 .robot .layer_31{ width: 99.87%; height: 96.84%; left: 0.13%; top: 0%;}
+.page1 .robot .layer_31 img{max-width: 749px;}
+.page1 .robot .layer_32{ width: 44.27%; height: 72.27%; left: 32.8%; top: 16.81%;}
+.page1 .robot .layer_32 img{max-width: 332px;}
+.deco{width: 84.67%; height: 37.48%; left: 5.33%; top: 39.22%;}
+.page1 .deco .layer_33{ width: 5.35%; height: 3.54%; left: 66.14%; top: 96.46%;}
+.page1 .deco .layer_33 img{max-width: 34px;}
+.page1 .deco .layer_34{ width: 16.54%; height: 32.08%; left: 83.46%; top: 22.35%;}
+.page1 .deco .layer_34 img{max-width: 105px;}
+.page1 .deco .layer_21_kb{ width: 17.8%; height: 14.82%; left: 2.36%; top: 7.3%;}
+.page1 .deco .layer_21_kb img{max-width: 113px;}
+.page1 .deco .layer_35{ width: 4.72%; height: 6.64%; left: 23.15%; top: 79.65%;}
+.page1 .deco .layer_35 img{max-width: 30px;}
+.page1 .deco .layer_22_kb_2{ width: 2.83%; height: 3.54%; left: 79.69%; top: 46.68%;}
+.page1 .deco .layer_22_kb_2 img{max-width: 18px;}
+.page1 .deco .layer_22_kb{ width: 4.25%; height: 4.42%; left: 7.4%; top: 59.07%;}
+.page1 .deco .layer_22_kb img{max-width: 27px;}
+.page1 .deco .layer_36{ width: 4.41%; height: 7.52%; left: 66.14%; top: 21.46%;}
+.page1 .deco .layer_36 img{max-width: 28px;}
+.page1 .deco .layer_25_kb{ width: 3.15%; height: 3.76%; left: 29.76%; top: 48.23%;}
+.page1 .deco .layer_25_kb img{max-width: 20px;}
+.page1 .deco .layer_37{ width: 20.47%; height: 32.96%; left: 18.74%; top: 0%;}
+.page1 .deco .layer_37 img{max-width: 130px;}
+.page1 .deco .layer_38{ width: 25.51%; height: 19.69%; left: 0%; top: 76.55%;}
+.page1 .deco .layer_38 img{max-width: 162px;}
+.page1 .deco .layer_39{ width: 7.4%; height: 10.18%; left: 92.6%; top: 63.5%;}
+.page1 .deco .layer_39 img{max-width: 47px;}
+.page1 .deco .slzndx{ width: 6.93%; height: 9.73%; left: 18.58%; top: 19.69%;}
+.page1 .deco .slzndx img{max-width: 44px;}
+.page1 .deco .slzndx{ width: 9.45%; height: 15.27%; left: 80.16%; top: 9.96%;}
+.page1 .deco .slzndx img{max-width: 60px;}
+.page1 .deco .slzndx{ width: 9.45%; height: 12.17%; left: 25.51%; top: 59.07%;}
+.page1 .deco .slzndx img{max-width: 60px;}
+.page1 .deco .layer_40{ width: 13.23%; height: 15.93%; left: 15.28%; top: 34.29%;}
+.page1 .deco .layer_40 img{max-width: 84px;}
+.page1 .hz{ width: 50.93%; height: 53.23%; left: 26.67%; top: 44.69%;}
+.page1 .hz img{max-width: 382px;}
+.header{width: 80.13%; height: 29.6%; left: 10.27%; top: 7.55%;}
+.page1 .header .layer_41{ width: 94.84%; height: 27.17%; left: 5.16%; top: 72.83%;}
+.page1 .header .layer_41 img{max-width: 570px;}
+.page1 .header .slzndx1{ width: 99.83%; height: 62.18%; left: 0%; top: 0%;}
+.page1 .header .slzndx1 img{max-width: 600px;}
+.page1 .logo{ width: 26.67%; height: 5.31%; left: 2.53%; top: 1.41%;}
+.page1 .logo img{max-width: 200px;}
+.button{width: 77.6%; height: 7.55%; left: 11.87%; top: 87.06%;}
+.page1 .button .button_1{ width: 44.85%; height: 100%; left: 55.15%; top: 0%;}
+.page1 .button .button_1 img{max-width: 261px;}
+.page1 .button .button_2{ width: 44.85%; height: 100%; left: 0%; top: 0%;}
+.page1 .button .button_2 img{max-width: 261px;}
+.page1 .button_3{ width: 16.8%; height: 2.99%; left: 81.2%; top: 2.07%;}
+.page1 .button_3 img{max-width: 126px;}
+.hdsm{width: 100%; height: auto; left: 0%; top: 50%; transform:translate(0,-50%);}
 .page1 .hdsm .slzndx{ width: 100%; height: auto; left: 0%; top: 0%;}
 .page1 .hdsm .slzndx img{max-width: 750px;}
 .page1 .hdsm .button_2_kb{ width: 33.87%; height: 7.46%; left: 34.27%; top: 83.33%;}

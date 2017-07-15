@@ -42,36 +42,39 @@
         <div class="abs layer_24" ><img class="ptimg" src="1-homepage/page1_deco_layer_24.png" /></div>
         <div class="abs layer_16" ><img class="ptimg" src="1-homepage/page1_deco_layer_16.png" /></div>
         <div class="abs slzndx" ><img class="ptimg" src="1-homepage/page1_deco_slzndx.png" /></div>
-        <div class="abs slzndx" ><img class="ptimg" src="1-homepage/page1_deco_slzndx.png" /></div>
-        <div class="abs slzndx" ><img class="ptimg" src="1-homepage/page1_deco_slzndx.png" /></div>
         <div class="abs layer_29" ><img class="ptimg" src="1-homepage/page1_deco_layer_29.png" /></div>
     </div>
     <div class="abs robot-ori"  style='display:none;'>
-        <div class="abs layer_28" ><img class="ptimg" src="1-homepage/page1_robot_layer_28.png" /></div>
-        <div class="abs layer_27" ><img class="ptimg" src="1-homepage/page1_robot_layer_27.png" /></div>
-        <div class="abs layer_8" ><img class="ptimg" src="1-homepage/page1_robot_layer_8.png" /></div>
+        <div class="abs layer_28" ><img class="ptimg" src="1-homepage/page1_robot_layer_30.png" /></div>
+        <div class="abs layer_27" ><img class="ptimg" src="1-homepage/page1_robot_layer_31.png" /></div>
+        <div class="abs layer_8" ><img class="ptimg" src="1-homepage/page1_robot_layer_32.png" /></div>
     </div>
     <div class="abs hz" ><img class="ptimg" src="1-homepage/page1_hz.png" /></div>
-    <div class="abs bt2" ><img class="ptimg" src="1-homepage/page1_bt2.png" /></div>
     <div class="abs header" >
-        <div class="abs layer_30" ><img class="ptimg" src="1-homepage/page1_header_layer_30.png" /></div>
-        <div class="abs layer_35" ><img class="ptimg" src="1-homepage/page1_header_layer_35.png" /></div>
-        <div class="abs layer_34" ><img class="ptimg" src="1-homepage/page1_header_layer_34.png" /></div>
-        <div class="abs layer_32" ><img class="ptimg" src="1-homepage/page1_header_layer_32.png" /></div>
-        <div class="abs layer_33" ><img class="ptimg" src="1-homepage/page1_header_layer_33.png" /></div>
-        <div class="abs layer_31" ><img class="ptimg" src="1-homepage/page1_header_layer_31.png" /></div>
+        <div class="abs layer_41" ><img class="ptimg" src="1-homepage/page1_header_layer_41.png" /></div>
+        <div class="abs slzndx1" ><img class="ptimg" src="1-homepage/page1_header_slzndx1.png" /></div>
     </div>
+    <div class="abs logo" ><img class="ptimg" src="1-homepage/page1_logo.png" /></div>
     <div class="abs button" >
-        <a href="javascript:void(0);" onclick="HomePage.me.showRule();" class="abs button_1" ><img class="ptimg" src="1-homepage/page1_button_button_1.png" /></a>
+        <a href="/my" onclick="" class="abs button_1" ><img class="ptimg" src="1-homepage/page1_button_button_1.png" /></a>
         <a href="/index" onclick="" class="abs button_2" ><img class="ptimg" src="1-homepage/page1_button_button_2.png" /></a>
     </div>
-    <div class="abs hdsm" style="display:none;" >
+    <a href="javascript:void(0);" onclick="HomePage.me.showRule();"  class="abs button_3" ><img class="ptimg" src="1-homepage/page1_button_3.png" /></a>
+    <div class="abs hdsm" style="display:none;">
         <img class="ptimg" src="1-homepage/page1_hdsm_slzndx.png" />
         <a href="javascript:void(0);" onclick="HomePage.me.hideRule();" class="abs button_2_kb" ><img class="ptimg" src="1-homepage/page1_hdsm_button_2_kb.png" /></a>
     </div>
 </div>
+
 <div style="display:none;">
     <script src="https://s11.cnzz.com/z_stat.php?id=1262847468&web_id=1262847468" language="JavaScript"></script>
 </div>
+<script>
+    $().ready(function () {
+        _czc.push(["_trackEvent","abilix-H5","loading"]);
+        _czc.push(["_trackEvent","abilix-H5","p-1"]);
+        _czc.push(["_trackEvent","abilix-H5","p-2"]);
+    })
+</script>
 </body>
 </html>
