@@ -37,8 +37,8 @@ Route::group(['middleware' => ['web', 'wechat.oauth']], function () {
         }
     });
     Route::get('/my/{id?}', function (Request $request, $id = null) {
-        $works = \App\Work::orderBy('vote_num', 'DESC')
-            ->where('user_id', session('user_id'))
+        $works = \App\Work::where('user_id', session('user_id'))
+            ->orderBy('vote_num', 'DESC')
             ->paginate(20);
         if ($request->ajax()) {
             return $works;

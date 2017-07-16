@@ -8,6 +8,7 @@ $().ready(function(){
     var beforeScrollTop = $("#page-list .content").scrollTop();
     var no_more = false;
     $("#page-list .content").scroll(function(){
+        var url = $(this).attr('data-url');
         var $this =$(this),
             viewH =$(this).height(),//可见高度
             contentH =$(this).get(0).scrollHeight,//内容高度
@@ -18,7 +19,7 @@ $().ready(function(){
         if( !no_more && delta > 0 && contentH - viewH - scrollTop <= 50){ //到达底部100px时,加载新内容
             no_more = true;
             $.ajax({
-                url:'/list',
+                url: url,
                 data:{page:page},
                 dataType:'json',
                 method:'GET'

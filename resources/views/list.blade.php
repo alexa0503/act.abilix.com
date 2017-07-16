@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div class="container hide page" id="page-list">
-        <div class="content">
+        <div class="content" data-url="/{{Request::segment(1)}}">
             <div class="row">
             @foreach($works as $k=>$work)
                 <div class="col-img text-center">
@@ -66,5 +66,5 @@
             @endif
         })
     </script>
-    <script src="/js/abilix.list.js?v=0.2"></script>
+    <script src="/js/abilix.list.js?v=0.21"></script>
 @endsection

@@ -371,3 +371,10 @@ header {
     font-size: 40px;
     color: #035faf;
 }
+#playMusic {
+    position: fixed;
+    top:0;
+    left:0;
+    z-index: 1100;
+    padding: 10px;
+}
