@@ -217,7 +217,7 @@ wx.config({!! $js->config(array('onMenuShareTimeline','onMenuShareAppMessage','o
                 <div class="abs bg" ></div>
                 <div class="abs button" >
                     <div class="abs button_1" ><a href="/my"><img class="ptimg" src="page3/page3_button_button_1.png" /></a></div>
-                    <div class="abs button_2" ><a href="/"><img class="ptimg" src="page3/page3_button_button_2.png" /></a></div>
+                    <div class="abs button_2" ><a href="/index"><img class="ptimg" src="page3/page3_button_button_2.png" /></a></div>
                 </div>
                 <div class="abs yz" >
                     <div class="abs layer_48" ><img class="ptimg" src="page3/page3_yz_layer_48.png" /></div>
