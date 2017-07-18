@@ -6,7 +6,7 @@
             @foreach($works as $k=>$work)
                 <div class="col-img text-center">
                     <a href="javascript:;" onclick="getWork({{$work->id}});"><img src="{{$work->image}}" width="300" class="img-rounded" height="300" /></a>
-                    <div class="txt">No.{{$work->id}}<div class="heart"><a href="javascript:;" onclick="vote('{{$work->id}}',$(this))"><img class="{{$work->hasVoted ? 'hide' : ''}}" src="/images/icon-heart-empty.png"><img class="{{$work->hasVoted ? '' : 'hide'}}" src="/images/icon-heart.png"></a> <span>{{$work->vote_num}}</span></div></div>
+                    <div class="txt">No.{{$work->id}}<div class="heart"><a href="javascript:;" onclick="vote('{{$work->id}}',$(this))"><img class="{{$work->has_voted ? 'hide' : ''}}" src="/images/icon-heart-empty.png"><img class="{{$work->has_voted ? '' : 'hide'}}" src="/images/icon-heart.png"></a> <span>{{$work->vote_num}}</span></div></div>
                 </div>
             @endforeach
             </div>

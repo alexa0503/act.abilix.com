@@ -29,9 +29,21 @@ $().ready(function(){
                     $.each(json.data, function(index, work){
                         html += '<div class="col-img text-center">';
                         html += '<a href="javascript:;" onclick="getWork('+work.id+')"><img src="'+work.image+'" height="300" width="300" class="img-rounded" /></a>';
-                        html += '<div class="txt">No.'+work.id+'<div class="heart"><a href="javascript:;"><img src="/images/icon-heart.png"></a> '+work.vote_num+'</div></div></div>';
+                        html += '<div class="txt">No.'+work.id+'<div class="heart"><a href="javascript:;" data-id="'+work.id+'"><img class="';
+                        if ( work.has_voted === true ){
+                            html += 'hide';
+                        }
+                        html +='" src="/images/icon-heart-empty.png"><img class="';
+                        if ( work.has_voted !== true ){
+                            html += 'hide';
+                        }
+                        html +='" src="/images/icon-heart.png"></a><span> '+work.vote_num+'</span></div></div></div>';
                     });
-                    $('#page-list .content .row').append(html);
+                    $('#page-list .content .row').append(html).find('.heart a').bind('click', function (e) {
+                        var obj = $(this);
+                        var id = $(this).attr('data-id');
+                        vote(id, obj);
+                    });
                     page++;
                     no_more = false;
                 }

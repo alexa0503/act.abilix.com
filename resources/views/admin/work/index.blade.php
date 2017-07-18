@@ -1,6 +1,23 @@
 @extends('layouts.admin')
 @section('content')
     <div class="smart-widget">
+        <div class="smart-widget-header">
+            <form class="form-inline" >
+                <div class="form-group">
+                    <input name="name" class="form-control" value="{{Request::input('name')}}" placeholder="请输入标题">
+                </div>
+                <div class="form-group">
+                    <select class="form-control" name="status">
+                        <option value="">选择状态/所有</option>
+                        <option value="-1">已删</option>
+                        <option value="1">正常</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="form-control">查询</button>
+                </div>
+            </form>
+        </div>
         <div class="smart-widget-inner">
             <div class="smart-widget-body">
                 <table class="table table-striped">
@@ -12,6 +29,8 @@
                         <th>用户昵称</th>
                         <th>投票数</th>
                         <th>创建时间</th>
+                        <th>状态</th>
+                        <th>操作</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -23,6 +42,8 @@
                             <td>{{$item->user->nickname}}</td>
                             <td>{{$item->vote_num}}</td>
                             <td>{{$item->created_at}}</td>
+                            <td>{!! $item->deleted_at != null ? '<span class="label label-warning">已删</span>':'<span class="label label-primary">正常</span>' !!}</td>
+                            <td>@if($item->deleted_at == null)<a href="{{route('work.destroy',['id'=>$item->id])}}" class="btn btn-primary btn-sm destroy">删除</a>@else<a href="{{route('work.show',['id'=>$item->id])}}" class="btn btn-warning btn-sm restore">恢复</a>@endif</td>
                         </tr>
                     @endforeach
                     </tbody>
@@ -35,6 +56,7 @@
 @section('scripts')
     <script>
         $().ready(function () {
+            $('select[name="status"]').val('{{Request::input('status')}}');
             $('.destroy').click(function(){
                 var url = $(this).attr('href');
                 var obj = $(this).parents('td').parent('tr');

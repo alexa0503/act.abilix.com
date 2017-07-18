@@ -12,9 +12,19 @@ class WorkController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $items = \App\Work::orderBY('vote_num','DESC')->paginate(20);
+        $model = \App\Work::orderBY('vote_num','DESC');//
+        if($request->status == -1){
+            $model->withTrashed()->whereNotNull('deleted_at');
+        }
+        elseif($request->status == null){
+            $model->withTrashed();
+        }
+        if($request->name != null ){
+            $model->where('name', 'LIKE', '%'.$request->name.'%');
+        }
+        $items = $model->paginate(20);
         return view('admin.work.index',['items'=>$items]);
     }
 
@@ -47,7 +57,10 @@ class WorkController extends Controller
      */
     public function show($id)
     {
-        //
+        \App\Work::withTrashed()
+            ->where('id', $id)
+            ->restore();
+        return ['ret'=>0];
     }
 
     /**
@@ -81,6 +94,7 @@ class WorkController extends Controller
      */
     public function destroy($id)
     {
-        //
+        \App\Work::destroy($id);
+        return ['ret'=>0];
     }
 }

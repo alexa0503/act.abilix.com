@@ -9,6 +9,7 @@ class Work extends Model
 {
     use SoftDeletes;
     protected $dates = ['deleted_at'];
+    protected $appends = ['has_voted'];
     public function getHasVotedAttribute($value)
     {
         if($this->voter){

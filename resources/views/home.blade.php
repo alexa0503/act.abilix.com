@@ -184,8 +184,8 @@
                 <div class="abs page3" >
                     <div class="abs bg" ></div>
                     <div class="abs button" >
-                        <div class="abs button_1" ><img class="ptimg" src="page3/page3_button_button_1.png" /></div>
-                        <div class="abs button_2" ><img class="ptimg" src="page3/page3_button_button_2.png" /></div>
+                        <div class="abs button_1" ><img id="btn-my" class="ptimg" src="page3/page3_button_button_1.png" /></div>
+                        <div class="abs button_2" ><img id="btn-index" class="ptimg" src="page3/page3_button_button_2.png" /></div>
                     </div>
                     <div class="abs yz" >
                         <div class="abs layer_48" ><img class="ptimg" src="page3/page3_yz_layer_48.png" /></div>
@@ -231,6 +231,12 @@
 </div>
 <script>
     $().ready(function () {
+        $('#btn-index').on('touchend',function () {
+            location.href='/index';
+        })
+        $('#btn-my').on('touchend',function () {
+            location.href='/my';
+        })
         _czc.push(["_trackEvent","abilix-H5","loading"]);
         _czc.push(["_trackEvent","abilix-H5","p-1"]);
         _czc.push(["_trackEvent","abilix-H5","p-2"]);

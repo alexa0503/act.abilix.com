@@ -13,6 +13,8 @@
     <link href="/apple-touch-icon.png" rel=apple-touch-icon>
     <script src=/js/jquery.min.js></script>
     <script src="//res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/abilix.js"></script>
     <script language="javascript">
         var wxData = {
             link: ''
@@ -85,8 +87,6 @@
         audioAutoPlay('bg-music');
     }
 </script>
-<script src="/js/bootstrap.min.js"></script>
-<script src="/js/abilix.js?v=0.2"></script>
 @yield('scripts')
 <div style="display:none;">
     <script src="https://s11.cnzz.com/z_stat.php?id=1262847468&web_id=1262847468" language="JavaScript"></script>
