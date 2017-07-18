@@ -37,7 +37,7 @@
                     @foreach($items as $item)
                         <tr>
                             <td>{{$item->id}}</td>
-                            <td><img src="{{$item->image}}" class="img-thumbnail" style="max-width: 200px;max-height: 200px;" /></td>
+                            <td><img src="{{asset($item->image)}}" class="img-thumbnail" style="max-width: 200px;max-height: 200px;" /></td>
                             <td>{{$item->name}}</td>
                             <td>{{$item->user->nickname}}</td>
                             <td>{{$item->vote_num}}</td>
