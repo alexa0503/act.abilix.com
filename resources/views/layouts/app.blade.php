@@ -70,7 +70,7 @@
     </div><!-- /.modal -->
 </div>
 <audio style="display:none; height: 0" id="bg-music" autoplay="autoplay" preload="auto" src="/bg.mp3" loop="loop"></audio>
-<!--<div id="playMusic"><img src="/images/music.png" > </div>-->
+<div id="playMusic"><img src="/images/icon-music-on.png" ><img src="/images/icon-music-off.png" class="hide"> </div>
 <script>
     function audioAutoPlay(id){//全局控制播放函数
         var audio = document.getElementById(id),
@@ -93,6 +93,22 @@
 </div>
 <script>
     $().ready(function () {
+        var is_playing = true;
+        $('#playMusic').on('touchend',function () {
+            if ( is_playing ){
+                $('#playMusic img').eq(0).addClass('hide');
+                $('#playMusic img').eq(1).removeClass('hide');
+                is_playing = false;
+                $('#bg-music')[0].pause();
+            }
+            else{
+                $('#playMusic img').eq(1).addClass('hide');
+                $('#playMusic img').eq(0).removeClass('hide');
+                is_playing = true;
+                $('#bg-music')[0].play();
+            }
+
+        })
         _czc.push(["_trackEvent","abilix-H5","loading"]);
         _czc.push(["_trackEvent","abilix-H5","p-1"]);
         _czc.push(["_trackEvent","abilix-H5","p-2"]);
