@@ -14,7 +14,8 @@ class WorkController extends Controller
      */
     public function index()
     {
-        //
+        $items = \App\Work::orderBY('vote_num','DESC')->paginate(20);
+        return view('admin.work.index',['items'=>$items]);
     }
 
     /**

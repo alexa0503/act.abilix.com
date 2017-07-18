@@ -149,10 +149,8 @@ Route::group(['middleware' => ['role:superadmin,global privileges', 'menu'], 'pr
     });
     Route::get('/dashboard', 'Admin\IndexController@index');
     Route::resource('/gallery', 'Admin\GalleryController');
-    Route::get('/form/{type?}', 'Admin\FormController@index')->name('form.index');
-    Route::resource('/form', 'Admin\FormController', ['except' => 'index']);
     Route::resource('/work', 'Admin\WorkController');
-    //Route::resource('/wechat/user', 'Admin\WechatUserController');
+    Route::resource('/wechat/user', 'Admin\WechatUserController');
 });
 Route::get('/login', 'Auth\LoginController@showLoginForm');
 Route::post('/login', 'Auth\LoginController@postLogin');

@@ -26,4 +26,8 @@ class Work extends Model
     {
         return $this->hasOne('App\Vote')->where('voter_id', session('user_id'));
     }
+    public function user()
+    {
+        return $this->belongsTo('App\WechatUser');
+    }
 }

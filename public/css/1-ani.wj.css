@@ -35,7 +35,7 @@ body,html{position: fixed;overflow:hidden;
     100%{-webkit-transform: rotate(-360deg);	}
 }
 .updown{
-	animation:updown 4s infinite ease-in-out;
+	animation:updown 2s infinite ease-in-out;
 	/*
 	-ms-animation:updown 1s infinite linear ;
 	-moz-animation :updown 1s infinite linear ;
@@ -48,7 +48,7 @@ body,html{position: fixed;overflow:hidden;
     100%{-webkit-transform: translateY(0px);	}
 }
 .updown2{
-	animation:updown2 3s infinite ease-in-out;
+	animation:updown2 2s infinite ease-in-out;
 	/*
 	-ms-animation:updown 1s infinite linear ;
 	-moz-animation :updown 1s infinite linear ;
@@ -57,9 +57,56 @@ body,html{position: fixed;overflow:hidden;
 }
 @keyframes updown2 {
     0%{-webkit-transform: translateY(0px);	} 
-    50%{-webkit-transform: translateY(-25px);	}
+    50%{-webkit-transform: translateY(-19%);	}
     100%{-webkit-transform: translateY(0px);	}
 }
+
+
+.fadeInOut{
+	animation:fadeInOut 1.5s infinite ease-in-out;
+	/*
+	-ms-animation:updown 1s infinite linear ;
+	-moz-animation :updown 1s infinite linear ;
+	-webkit-animation:updown 1s infinite linear ;
+	*/
+}
+@keyframes fadeInOut {
+    0%{opacity:1;	} 
+    50%{opacity:0;	}  
+    100%{opacity:1;	}  
+}
+.fadeInOut2{
+	animation:fadeInOut2 1.5s infinite ease-in-out;
+	/*
+	-ms-animation:updown 1s infinite linear ;
+	-moz-animation :updown 1s infinite linear ;
+	-webkit-animation:updown 1s infinite linear ;
+	*/
+}
+@keyframes fadeInOut2 {
+    0%{opacity:0.6;	} 
+    50%{opacity:1;	} 
+    80%{opacity:0.6;	}  
+    100%{opacity:0.6;	}  
+}
+
+.rot_a_little{
+	animation:rot_a_little 1.25s infinite linear;
+	/*
+	-ms-animation:updown 1s infinite linear ;
+	-moz-animation :updown 1s infinite linear ;
+	-webkit-animation:updown 1s infinite linear ;
+	*/
+}
+@keyframes rot_a_little {
+    0%{opacity:0;-webkit-transform: rotate(-6deg);	} 
+    30%{opacity:1;-webkit-transform: rotate(0deg);	} 
+    60%{opacity:1;-webkit-transform: rotate(6deg);	} 
+    90%{opacity:0;-webkit-transform: rotate(12deg);	}
+    100%{opacity:0;-webkit-transform: rotate(30deg);	}
+}
+
+
 /*@keyframes updown {
     0%{-webkit-transform: translateY(0);	}
     25%{-webkit-transform: translateY(3px);	}

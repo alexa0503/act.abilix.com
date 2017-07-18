@@ -20,9 +20,9 @@ body,html{position: fixed;overflow:hidden;
 	width:100%;height:100%;margin:0px;padding:0px;background-color:#79acd1;}
 .abs { position: absolute; }
 .ptimg { width: 100%; }
-.page1 .bg{ width: 100%; height: 100%; left: 0%; top: 0%;background:url('../1-homepage/bg.jpg') no-repeat 0 0;background-size:100% 100%;}
-.page2 .bg{ width: 100%; height: 100%; left: 0%; top: 0%;background:url('../page2/page2_bg.jpg') no-repeat 0 0;background-size:100% 100%;}
-.page3 .bg{ width: 100%; height: 100%; left: 0%; top: 0%;background:url('../page3/page3_bg.jpg') no-repeat 0 0;background-size:100% 100%;}
+.page1 .bg{ width: 100%; height: 100%; left: 0%; top: 0%;background:url('../1-homepage/bg.jpg') no-repeat 0 0;background-size:100% 100%;transform: translateZ(-1000px);transform-style: preserve-3d;}
+.page2 .bg{ width: 100%; height: 100%; left: 0%; top: 0%;background:url('../page2/page2_bg.jpg') no-repeat 0 0;background-size:100% 100%;transform: translateZ(-1000px);transform-style: preserve-3d;}
+.page3 .bg{ width: 100%; height: 100%; left: 0%; top: 0%;background:url('../page3/page3_bg.jpg') no-repeat 0 0;background-size:100% 100%;transform: translateZ(-1000px);transform-style: preserve-3d;}
 
 /*************固定****************/
 .xhan{z-index:999; width: 6.67%; height: 3.32%; left: 46.67%; top: 93.12%;}
@@ -30,6 +30,16 @@ body,html{position: fixed;overflow:hidden;
 
 .ylan{ z-index:999;width: 5.6%; height: 3.57%; left: 4.27%; top: 2.4%;}
 .ylan img{max-width: 42px;}
+
+
+.cpjsfc{z-index:9999;width: 88.8%; height: auto; left: 5.6%; top: 50%; transform:translate(0,-50%);}
+.cpjsfc .button{ width: 38.14%; height: 8.02%; left: 32.28%; top: 86.54%;}
+.cpjsfc .button img{max-width: 254px;}
+
+
+.hdsm{z-index:9999;width: 100%; height: auto; left: 0%; top: 50%; transform:translate(0,-50%);}
+.hdsm .button_2_kb{ width: 33.87%; height: 7.46%; left: 34.27%; top: 82.26%;}
+.hdsm .button_2_kb img{max-width: 254px;}
 /*************固定****************/
 
 
@@ -56,9 +66,11 @@ body,html{position: fixed;overflow:hidden;
 
 .page1{width: 100%; height: 100%; left: 0%; top: 0%;}
 .page1 .robot{width: 100%; height: 92.37%; left: 0%; top: 0%;}
-.page1 .robot .fdys .fdys{width: 100%; height: 62.48%; left: 0%; top: 37.52%;}
-.page1 .robot .fdys .slzndx_kb_3{ width: 100%; height: 100%; left: 0%; top: 0%;}
-.page1 .robot .fdys .slzndx_kb_3 img{max-width: 750px;}
+.page1 .robot .light {width: 100%; height: 62.48%; left: 0%; top: 37.52%;transform: translateZ(-100px);transform-style: preserve-3d;}
+.page1 .robot .light .slzndx_kb_3{ width: 100%; height: 100%; left: 0%; top: 0%;}
+.page1 .robot .light .slzndx_kb_3 img{max-width: 750px;}
+
+.page1 .robot .fdys {width: 100%; height: 62.48%; left: 0%; top: 37.52%;}
 .page1 .robot .fdys .layer_21{ width: 14.53%; height: 16.38%; left: 81.73%; top: 26.72%;}
 .page1 .robot .fdys .layer_21 img{max-width: 109px;}
 .page1 .robot .fdys .layer_21_kb{ width: 15.07%; height: 9.63%; left: 1.07%; top: 15.95%;}
@@ -121,11 +133,6 @@ body,html{position: fixed;overflow:hidden;
 .page1 .hz .bt1 .slzndx5{ width: 14.19%; height: 18.34%; left: 55.98%; top: 11.31%;}
 .page1 .hz .bt1 .slzndx5 img{max-width: 89px;}
 
-.cpjsfc{width: 88.8%; height: auto; left: 5.6%; top: 50%; transform:translate(0,-50%);}
-.page1 .cpjsfc .button{ width: 38.14%; height: 8.02%; left: 32.28%; top: 86.54%;}
-.page1 .cpjsfc .button img{max-width: 254px;}
-
-
 
 
 
@@ -181,9 +188,6 @@ body,html{position: fixed;overflow:hidden;
 .page2 .button_{ width: 33.87%; height: 7.46%; left: 33.07%; top: 82.01%;}
 .page2 .button_ img{max-width: 254px;}
 
-.page2 .hdsm{width: 100%; height: auto; left: 0%; top: 50%; transform:translate(0,-50%);}
-.page2 .hdsm .button_2_kb{ width: 33.87%; height: 7.46%; left: 34.27%; top: 82.26%;}
-.page2 .hdsm .button_2_kb img{max-width: 254px;}
 .ylan{ width: 5.6%; height: 3.57%; left: 4.27%; top: 2.4%;}
 .ylan img{max-width: 42px;}
 
@@ -193,12 +197,12 @@ body,html{position: fixed;overflow:hidden;
 
 
 .page3{width: 100%; height: 100%; left: 0%; top: 0%;}
-.button{width: 77.6%; height: 7.55%; left: 11.87%; top: 85.24%;}
+.page3 .button{width: 77.6%; height: 7.55%; left: 11.87%; top: 85.24%;}
 .page3 .button .button_1{ width: 44.85%; height: 100%; left: 55.15%; top: 0%;}
 .page3 .button .button_1 img{max-width: 261px;}
 .page3 .button .button_2{ width: 44.85%; height: 100%; left: 0%; top: 0%;}
 .page3 .button .button_2 img{max-width: 261px;}
-.yz{width: 91.73%; height: 72.55%; left: 4.8%; top: 5.97%;}
+.page3 .yz{width: 91.73%; height: 72.55%; left: 4.8%; top: 5.97%;}
 .page3 .yz .layer_48{ width: 3.2%; height: 2.29%; left: 74.85%; top: 29.14%;}
 .page3 .yz .layer_48 img{max-width: 22px;}
 .page3 .yz .layer_51{ width: 4.65%; height: 3.31%; left: 77.76%; top: 22.86%;}
