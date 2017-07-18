@@ -9,7 +9,7 @@
     <link href="/css/bootstrap.min.css" rel=stylesheet>
     <!--[if lt IE 9]><script src=/js/ie8-responsive-file-warning.js></script><![endif]-->
     <!--[if lt IE 9]> <script src=https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js></script> <script src=https://oss.maxcdn.com/respond/1.4.2/respond.min.js></script> <![endif]-->
-    <link href="/css/abilix.css?v=0.2" rel=stylesheet>
+    <link href="/css/abilix.css?v=0.21" rel=stylesheet>
     <link href="/apple-touch-icon.png" rel=apple-touch-icon>
     <script src=/js/jquery.min.js></script>
     <script src="//res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
@@ -45,12 +45,28 @@
         @endif
     </script>
     <script type="text/javascript">
-        document.addEventListener("WeixinJSBridgeReady", function () {
-            audioAutoPlay('bg-music');//给个全局函数
-        }, false);
-        document.addEventListener('YixinJSBridgeReady', function() {
-            audioAutoPlay('bg-music');//给个全局函数
-        }, false);
+        function audioAutoPlay(id){//全局控制播放函数
+            var audio = document.getElementById(id),
+                play = function(){
+                    audio.play();
+                    document.removeEventListener("touchstart",play, false);
+                };
+            audio.play();
+            document.addEventListener("touchstart",play, false);
+        }
+        $().ready(function () {
+            document.addEventListener("WeixinJSBridgeReady", function () {
+                audioAutoPlay('bg-music');//给个全局函数
+            }, false);
+            document.addEventListener('YixinJSBridgeReady', function() {
+                audioAutoPlay('bg-music');//给个全局函数
+            }, false);
+            var isAppInside=/micromessenger/i.test(navigator.userAgent.toLowerCase())||/yixin/i.test(navigator.userAgent.toLowerCase());
+            if(!isAppInside){//给非微信易信浏览器
+                audioAutoPlay('bg-music');
+            }
+        });
+
     </script>
 </head>
 <body class="abilix">
@@ -71,22 +87,6 @@
 </div>
 <audio style="display:none; height: 0" id="bg-music" autoplay="autoplay" preload="auto" src="/bg.mp3" loop="loop"></audio>
 <div id="playMusic"><img src="/images/icon-music-on.png" ><img src="/images/icon-music-off.png" class="hide"> </div>
-<script>
-    function audioAutoPlay(id){//全局控制播放函数
-        var audio = document.getElementById(id),
-            play = function(){
-                audio.play();
-                document.removeEventListener("touchstart",play, false);
-            };
-        audio.play();
-        document.addEventListener("touchstart",play, false);
-    }
-
-    var isAppInside=/micromessenger/i.test(navigator.userAgent.toLowerCase())||/yixin/i.test(navigator.userAgent.toLowerCase());
-    if(!isAppInside){//给非微信易信浏览器
-        audioAutoPlay('bg-music');
-    }
-</script>
 @yield('scripts')
 <div style="display:none;">
     <script src="https://s11.cnzz.com/z_stat.php?id=1262847468&web_id=1262847468" language="JavaScript"></script>

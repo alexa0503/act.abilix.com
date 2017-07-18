@@ -372,7 +372,8 @@ header {
     color: #035faf;
 }
 #playMusic {
-    position: fixed;
+    position: absolute;
+    width: 80px;
     top:0;
     right:0;
     z-index: 1100;
