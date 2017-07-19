@@ -47,6 +47,19 @@ body,html{position: fixed;overflow:hidden;
     50%{-webkit-transform: translateY(-15px);	}
     100%{-webkit-transform: translateY(0px);	}
 }
+.updown3{
+	animation:updown3 2s infinite ease-in-out;
+	/*
+	-ms-animation:updown 1s infinite linear ;
+	-moz-animation :updown 1s infinite linear ;
+	-webkit-animation:updown 1s infinite linear ;
+	*/
+}
+@keyframes updown3 {
+    0%{-webkit-transform: translateY(0px);	} 
+    50%{-webkit-transform: translateY(-10px);	}
+    100%{-webkit-transform: translateY(0px);	}
+}
 .updown2{
 	animation:updown2 2s infinite ease-in-out;
 	/*

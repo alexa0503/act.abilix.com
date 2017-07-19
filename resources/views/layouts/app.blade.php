@@ -45,28 +45,9 @@
         @endif
     </script>
     <script type="text/javascript">
-        function audioAutoPlay(id){//全局控制播放函数
-            var audio = document.getElementById(id),
-                play = function(){
-                    audio.play();
-                    document.removeEventListener("touchstart",play, false);
-                };
-            audio.play();
-            document.addEventListener("touchstart",play, false);
-        }
-        $().ready(function () {
-            document.addEventListener("WeixinJSBridgeReady", function () {
-                audioAutoPlay('bg-music');//给个全局函数
-            }, false);
-            document.addEventListener('YixinJSBridgeReady', function() {
-                audioAutoPlay('bg-music');//给个全局函数
-            }, false);
-            var isAppInside=/micromessenger/i.test(navigator.userAgent.toLowerCase())||/yixin/i.test(navigator.userAgent.toLowerCase());
-            if(!isAppInside){//给非微信易信浏览器
-                audioAutoPlay('bg-music');
-            }
+        wx.ready(function() {
+            document.getElementById('bg-music').play();
         });
-
     </script>
 </head>
 <body class="abilix">
@@ -85,26 +66,31 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal -->
 </div>
-<audio style="display:none; height: 0" id="bg-music" autoplay="autoplay" preload="auto" src="/bg.mp3" loop="loop"></audio>
-<div id="playMusic"><img src="/images/icon-music-on.png" ><img src="/images/icon-music-off.png" class="hide"> </div>
+<audio style="display:none; height: 0" id="bg-music" autoplay preload loop  src="/bg.mp3"></audio>
+<div id="playMusic"><img src="/images/icon-music-on.png" class="hide" ><img src="/images/icon-music-off.png" class="hide"> </div>
 @yield('scripts')
 <div style="display:none;">
     <script src="https://s11.cnzz.com/z_stat.php?id=1262847468&web_id=1262847468" language="JavaScript"></script>
 </div>
 <script>
     $().ready(function () {
-        var is_playing = true;
+        if (  $('#bg-music')[0].paused === false ){
+            $('#playMusic img').eq(1).removeClass('hide');
+        }
+        else{
+            $('#playMusic img').eq(0).removeClass('hide');
+        }
         $('#playMusic').on('touchend',function () {
-            if ( is_playing ){
+            if (  $('#bg-music')[0].paused === false ){
                 $('#playMusic img').eq(0).addClass('hide');
                 $('#playMusic img').eq(1).removeClass('hide');
-                is_playing = false;
+                //is_playing = false;
                 $('#bg-music')[0].pause();
             }
             else{
                 $('#playMusic img').eq(1).addClass('hide');
                 $('#playMusic img').eq(0).removeClass('hide');
-                is_playing = true;
+                //is_playing = true;
                 $('#bg-music')[0].play();
             }
 
