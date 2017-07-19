@@ -61,10 +61,17 @@
             @if($id)
             $('#page-work').removeClass('hide');
             getWork({{$id}});
+            $(".btn-back").on('touchend', function () {
+                $(".page").addClass("hide");
+                $('#page-list').removeClass("hide");
+            });
             @else
             $('#page-list').removeClass('hide');
+            $(".btn-back").on('touchend', function () {
+                window.location.href = '/';
+            });
             @endif
         })
     </script>
-    <script src="/js/abilix.list.js?v=0.21"></script>
+    <script src="/js/abilix.list.js?v=1.01"></script>
 @endsection

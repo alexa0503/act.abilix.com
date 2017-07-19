@@ -1,9 +1,5 @@
 $().ready(function(){
-    $(".btn-back").on('touchend', function () {
-        window.location.href = '/';
-        //$(".page").addClass("hide");
-        //$('#page-list').removeClass("hide");
-    });
+
     var page = 2;
     var beforeScrollTop = $("#page-list .content").scrollTop();
     var no_more = false;
