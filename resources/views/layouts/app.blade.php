@@ -14,7 +14,7 @@
     <script src=/js/jquery.min.js></script>
     <script src="//res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
     <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/abilix.js"></script>
+    <script src="/js/abilix.js?v=1.1"></script>
     <script language="javascript">
         var wxData = {
             link: ''
