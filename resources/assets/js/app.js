@@ -14,9 +14,46 @@ window.Vue = require('vue');
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+import VueRouter from 'vue-router';
+Vue.use(VueRouter);
+//Vue.component('index', require('./components/Index.vue'));
+import index from './components/Index.vue';
+let router = new VueRouter({
+    hashbang: false,
+    history: true,
+    mode: 'history',
+    routes: [
+        {
+            path: '/dashboard',
+            name: 'dashboard',
+            components:{
+                default:index,
+                menu:menu
+            }
+        },
+        {
+            path: '/post',
+            name: 'postIndex',
+            components:{
+                default:postIndex,
+                menu:menu
+            }
+        }
+    ]
+})
 
-Vue.component('example', require('./components/Example.vue'));
-
+window.axios.interceptors.response.use(
+    response => {
+        return response;
+    },
+    error => {
+        if (error.response) {
+            console.log(error.response.data);
+        }
+        return Promise.reject(error)
+    }
+);
 const app = new Vue({
-    el: '#app'
+    el: '#wrapper',
+    router
 });
