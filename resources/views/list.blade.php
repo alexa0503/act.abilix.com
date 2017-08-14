@@ -62,13 +62,13 @@
             $('#page-work').removeClass('hide');
             getWork({{$id}});
             $(".btn-back").on('touchend', function () {
-                $(".page").addClass("hide");
-                $('#page-list').removeClass("hide");
+                window.location.href = '/';
             });
             @else
             $('#page-list').removeClass('hide');
             $(".btn-back").on('touchend', function () {
-                window.location.href = '/';
+                $(".page").addClass("hide");
+                $('#page-list').removeClass("hide");
             });
             @endif
         })
