@@ -42,7 +42,7 @@
             link: '{{url("/phase2")}}',
             imgUrl: '{{asset("images/share.jpg")}}'
         };
-        wxShare(wxData);
+        
         @endif
     </script>
     <script type="text/javascript">

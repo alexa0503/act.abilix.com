@@ -72,6 +72,7 @@ $().ready(function(){
     $('.share-close').on('touchend', function(){
         $('#modal-share').modal('hide');
     });
+    wxShare(wxData);
 
 
 
