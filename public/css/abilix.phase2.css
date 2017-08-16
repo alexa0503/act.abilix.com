@@ -1,0 +1,100 @@
+.page1 {
+	background: url('../images/phase2/bkg-01.png') center 0 no-repeat;
+	position: relative;
+}
+.page2 {
+	background: url('../images/phase2/bkg-02.png') center 0 no-repeat;
+	position: relative;
+}
+.page1 .avatar {
+	margin-top:30px;
+}
+.page1 .avatar .img-circle {
+	border: 1px solid #fff;
+}
+.page1 .prize {
+	position: absolute;
+	top:0;
+	left: 0;
+	width: 100%;
+	height: 314px;
+}
+.page1 .prize .img-prize {
+	bottom:0;
+	left: 0;
+	position: absolute;
+	width: 100%;
+	text-align: center;
+}
+.page1 .rule-text {
+	margin-top: 160px;
+}
+.page1 .qr {
+	margin: 40px 100px 0;
+	font-size: 24px;
+	line-height: 30px;
+	height: 250px;
+}
+.page1 .btns-01 {
+	margin: 95px 0 0;
+	position: relative;
+	height: 90px;
+}
+.page2 .btns-01 {
+	margin: 15px 0 0;
+	position: relative;
+	height: 90px;
+}
+.btns-01 .btn-back {
+	position: absolute;
+	left:85px;
+	top:0;
+}
+.btns-01 .btn-share {
+	position: absolute;
+	right:65px;
+	top:7px;
+}
+.page2 .topper {
+	margin-top: 10px;
+	margin-bottom: 20px;
+	height: 200px;
+}
+.page2 .phase2-ranking {
+	margin-top: 10px;
+}
+.page2 .phase2-number {
+	font-family: 'impactreg';
+    color: #0062a6;
+    text-align: center;
+    font-size: 36px;
+	border-bottom: 2px solid #0d66b3;
+	line-height: 60px;
+	padding-bottom: 10px;
+	margin: 0 150px;
+}
+.page2 .phase2-title {
+	font-family: 'impactreg';
+    color: #0062a6;
+    text-align: center;
+    font-size: 40px;
+	margin-top: 10px;
+}
+.page2 .phase2-heart {
+	font-family: 'impactreg';
+    color: #0062a6;
+    text-align: center;
+    font-size: 40px;
+	margin-top: 20px;
+}
+.page2 .custom-album {
+	margin-bottom: 20px;
+}
+.footer {
+	position: fixed;
+	bottom: 0;
+	height: 40px;
+	text-align: center;
+	width: 100%;
+	padding-bottom: 100px;
+}

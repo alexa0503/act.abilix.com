@@ -16,6 +16,42 @@ use Spatie\Permission\Models\Permission;
 
 Route::any('/wechat', 'WechatController@serve');
 Route::group(['middleware' => ['web', 'wechat.oauth']], function () {
+    Route::get('/phase2/index', function(){
+        $wechat_user = session('wechat.oauth_user');
+        $work = \App\Work::orderBy('vote_num', 'DESC')->where('user_id', session('user_id'))->first();
+        if(null == $work){
+            $ranking_num = 4;
+        }
+        else{
+            $count = \App\Work::where('vote_num','>', $work->vote_num)
+                ->orderBy('vote_num', 'DESC')
+                ->count();
+            if( $count == 0 ){
+                $ranking_num = 1;
+            }
+            elseif( $count >= 1 && $count <= 2){
+                $ranking_num = 2;
+            }
+            elseif( $count >= 3 && $count <= 4){
+                $ranking_num = 3;
+            }
+            else{
+                $ranking_num = 4;
+            }
+        }
+
+        $ranking_img = asset('images/phase2/icon-prize-0'.$ranking_num.'.png');
+        return view('phase2.index',[
+            'wechat_user'=>$wechat_user,
+            'ranking_img' => $ranking_img,
+        ]);
+    });
+    Route::get('/phase2/list', function(){
+        $works = \App\Work::orderBy('vote_num', 'DESC')->limit(5)->get();
+        return view('phase2.list',[
+            'works'=>$works
+        ]);
+    });
     Route::get('/', function () {
         return view('home');
     });
@@ -174,4 +210,3 @@ Route::get('/install', function () {
 });
 
 Auth::routes();
-
