@@ -16,6 +16,9 @@ use Spatie\Permission\Models\Permission;
 
 Route::any('/wechat', 'WechatController@serve');
 Route::group(['middleware' => ['web', 'wechat.oauth']], function () {
+    Route::get('/phase2', function(){
+        return redirect(url('/phase2/index'));
+    });
     Route::get('/phase2/index', function(){
         $wechat_user = session('wechat.oauth_user');
         $work = \App\Work::orderBy('vote_num', 'DESC')->where('user_id', session('user_id'))->first();
