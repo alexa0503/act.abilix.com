@@ -69,9 +69,9 @@
             easing: 'easeInOutCubic',
             easingcss3: 'ease',
     		verticalCentered: false,
-            anchors: ['first', 'second', 'third', 'fourth', 'five'],
+            anchors: ['first', 'second', 'third', 'fourth', 'fifth','sixth'],
             afterLoad: function(anchorLink, index){
-                if(index == 5){
+                if(index == 6){
                     $('.footer').hide();
                 }
                 else{

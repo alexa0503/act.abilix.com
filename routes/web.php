@@ -35,7 +35,7 @@ Route::group(['middleware' => ['web', 'wechat.oauth']], function () {
             elseif( $count >= 1 && $count <= 2){
                 $ranking_num = 2;
             }
-            elseif( $count >= 3 && $count <= 4){
+            elseif( $count >= 3 && $count <= 5){
                 $ranking_num = 3;
             }
             else{
@@ -50,7 +50,7 @@ Route::group(['middleware' => ['web', 'wechat.oauth']], function () {
         ]);
     });
     Route::get('/phase2/list', function(){
-        $works = \App\Work::orderBy('vote_num', 'DESC')->limit(5)->get();
+        $works = \App\Work::orderBy('vote_num', 'DESC')->limit(6)->get();
         return view('phase2.list',[
             'works'=>$works
         ]);
