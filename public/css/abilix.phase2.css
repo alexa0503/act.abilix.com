@@ -1,9 +1,22 @@
+.abilix {
+	overflow: hidden;
+	height: 100%;
+}
+#header {
+	position: fixed;
+	width: 100%;
+	text-align: center;
+	z-index: 1000;
+	top:0;
+}
 .page1 {
-	background: url('../images/phase2/bkg-01.png') center 0 no-repeat;
+	margin-top: 60px;
+	background: url('../images/phase2/bkg-01.png') center 60px no-repeat;
 	position: relative;
 }
 .page2 {
-	background: url('../images/phase2/bkg-02.png') center 0 no-repeat;
+	margin-top: 60px;
+	background: url('../images/phase2/bkg-02.png') center 60px no-repeat;
 	position: relative;
 }
 .page1 .avatar {

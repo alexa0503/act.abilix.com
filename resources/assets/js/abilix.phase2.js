@@ -61,9 +61,6 @@ $().ready(function(){
         hasSubmitted = false;
         $('#modal-tip').modal('hide');
     });
-    var h = $(window).height() - $('#header').height()/_s;
-    $('.page1').height(h);
-    //$('.section').height(h);
 
     $('.btn-share').on('touchend', function () {
         //_czc.push(["_trackEvent","abilix-H5","bt-立刻分享"]);
