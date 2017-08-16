@@ -53,10 +53,11 @@ Route::group(['middleware' => ['web', 'wechat.oauth']], function () {
         ]);
     });
     Route::get('/', function () {
+        return redirect(url('/phase2'));
         return view('home');
     });
     Route::get('/index', function () {
-
+        return redirect(url('/phase2'));
         $count = \App\Work::count();
         return view('index', ['count' => $count + 1]);
     });
@@ -64,8 +65,10 @@ Route::group(['middleware' => ['web', 'wechat.oauth']], function () {
     Route::get('/list/{id?}', function (Request $request, $id = null) {
         $works = \App\Work::orderBy('vote_num', 'DESC')->paginate(20);
         if ($request->ajax()) {
+            return [];
             return $works;
         } else {
+            return redirect(url('/phase2'));
             return view('list', [
                 'works' => $works,
                 'id' => $id,
@@ -77,8 +80,10 @@ Route::group(['middleware' => ['web', 'wechat.oauth']], function () {
             ->orderBy('vote_num', 'DESC')
             ->paginate(20);
         if ($request->ajax()) {
+            return [];
             return $works;
         } else {
+            return redirect(url('/phase2'));
             return view('list', [
                 'works' => $works,
                 'id' => $id,
@@ -102,6 +107,7 @@ Route::group(['middleware' => ['web', 'wechat.oauth']], function () {
         //return view('work', ['work' => $work]);
     });
     Route::get('/vote/{id}', function($id){
+        return [];
         $user_id = session('user_id');
         $count = \App\Vote::where('work_id', $id)
             ->where('voter_id', $user_id)
@@ -127,6 +133,7 @@ Route::group(['middleware' => ['web', 'wechat.oauth']], function () {
     });
     //信息提交
     Route::post('/upload', function (Request $request) {
+        return [];
         $scale = $request->scale ?: 1;
         $x = $request->x ?: 0;
         $y = $request->y ?: 0;
