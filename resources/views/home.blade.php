@@ -3,12 +3,12 @@
     <title>{{ config('app.name', '') }}</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <link rel="stylesheet" type="text/css" href="css/loading.wj.css?v=1">
-    <link rel="stylesheet" type="text/css" href="css/1-ani.wj.css?v=1">
-    <link rel="stylesheet" type="text/css" href="css/animate.css?v=1">
-    <link rel="stylesheet" type="text/css" href="css/idangerous.swiper.css">
-    <script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
-    <script type="text/javascript" src="js/main.js"></script>
+    <link rel="stylesheet" type="text/css" href="/p2/css/loading.wj.css?v=1">
+    <link rel="stylesheet" type="text/css" href="/p2/css/1-ani.wj.css?v=1">
+    <link rel="stylesheet" type="text/css" href="/p2/css/animate.css?v=1">
+    <link rel="stylesheet" type="text/css" href="/p2/css/idangerous.swiper.css">
+    <script type="text/javascript" src="/js/jquery-1.10.1.min.js"></script>
+    <script type="text/javascript" src="/p2/js/main.js"></script>
     <script src="//res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
     @php
         $js = \EasyWeChat::js();
@@ -54,8 +54,8 @@
         wxData = {
             title: '暑期小心！前方有一大波奖金礼物……至高10000元', // 分享标题
             desc: '内含10000元现金大奖，手快有手慢无', // 分享描述
-            link: '{{url("/")}}', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-            imgUrl: '{{asset("images/share.jpg")}}' // 分享图标
+            link: '{{url("/phase2")}}', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+            imgUrl: '{{asset("/images/share.jpg")}}' // 分享图标
         };
         wxShare(wxData);
         @endif
