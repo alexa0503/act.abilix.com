@@ -4,7 +4,7 @@
 	src: local('../fonts/impactreg'), url('../fonts/impactreg.woff') format('woff'), url('../fonts/impactreg.ttf') format('truetype');
 }
 .abilix {
-    background: url("../images/bkg.jpg") center 0 no-repeat;
+    background: #83b3d6 url("../images/bkg.jpg") center 0 no-repeat;
 }
 header {
     margin: 18px 0;
@@ -121,7 +121,7 @@ header {
 .btn-share.active.focus{
     margin-right: 40px;
     width: 254px;
-    height: 80px;
+    height: 90px;
     background: url("../images/btn-share.png") 0 0 no-repeat;
     -webkit-background-size: 100% 100%;           /* Safari 3.0 */
     -moz-background-size: 100% 100%;           /* Gecko 1.9.2 (Firefox 3.6) */

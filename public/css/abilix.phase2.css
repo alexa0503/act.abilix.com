@@ -13,6 +13,7 @@
 	margin-top: 60px;
 	background: url('../images/phase2/bkg-01.png') center 60px no-repeat;
 	position: relative;
+	min-height: 1200px;
 }
 .page2 {
 	margin-top: 60px;
@@ -66,10 +67,10 @@
 .btns-01 .btn-share {
 	position: absolute;
 	right:65px;
-	top:7px;
+	top:0px;
 }
 .page2 .topper {
-	margin-top: 10px;
+	margin-top: 40px;
 	margin-bottom: 20px;
 	height: 200px;
 }

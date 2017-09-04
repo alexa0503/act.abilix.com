@@ -49,7 +49,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-body text-center">
-                    <img src="/images/share.png" width="500" />
+                    <img src="/images/share.png" width="506" />
                     <div class="share-close"><img src="/images/icon-close.png" class="img-responsive" /></div>
                 </div>
             </div><!-- /.modal-content -->
